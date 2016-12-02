@@ -157,7 +157,7 @@ class OutstoreBookAction extends AppAction{
                 WHERE d.osm_status =0
                 GROUP BY oss_prod,oss_store )  as c on  c.oss_prod = a.iss_prod and a.iss_store=c.oss_store
                 {$condition}
-				 order by pdca_name asc";
+				 order by pdca_name,prod_name asc";
 
 
 

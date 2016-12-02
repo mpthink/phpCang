@@ -54,6 +54,24 @@ class OutstoreQueryAction extends AppAction{
             $this->assign("out_date_start",$_GET['osm_date_start']);
             $this->assign("out_date_end",$_GET['osm_date_end']);
         }
+		
+		//add for searching by danju date
+		if($_GET["osm_danju_start"]!=""&&$_GET["osm_danju_end"]=="")
+        {
+            $map["osm_danju_date"]=array("egt","{$_GET['osm_danju_start']}".' 00:00:00');
+            $this->assign("danju_date_start",$_GET['osm_danju_start']);
+        }
+        if($_GET["osm_danju_start"]==""&&$_GET["osm_danju_end"]!="")
+        {
+            $map["osm_danju_date"]=array("elt","{$_GET['osm_danju_end']}".' 59:59:59');
+            $this->assign("danju_date_end",$_GET['osm_danju_end']);
+        }
+        if($_GET["osm_danju_start"]!=""&&$_GET["osm_danju_end"]!=""){
+            $map["osm_danju_date"]=array(array("egt","{$_GET['osm_danju_start']}".' 00:00:00'),array("elt","{$_GET['osm_danju_end']}".' 59:59:59'));
+            $this->assign("danju_date_start",$_GET['osm_danju_start']);
+            $this->assign("danju_date_end",$_GET['osm_danju_end']);
+        }
+		
         if($_GET["oss_prodname"]!=""){
             $prodname = urldecode($_GET['oss_prodname']);
             $map["oss_prodname"]=array("like","%{$prodname}%");
@@ -378,6 +396,21 @@ class OutstoreQueryAction extends AppAction{
         if($_POST["out_date_start"]!=""&&$_POST["out_date_end"]!=""){
             $map["b.osm_date"]=array(array("egt","{$_POST["out_date_start"]}".' 00:00:00'),array("elt","{$_POST["out_date_end"]}".' 59:59:59'));
         }
+		
+		//add for danju date
+		if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]=="")
+        {
+            $map["b.osm_danju_date"]=array("egt","{$_POST["danju_date_start"]}".' 00:00:00');
+        }
+        if($_POST["danju_date_start"]==""&&$_POST["danju_date_end"]!="")
+        {
+            $map["b.osm_danju_date"]=array("elt","{$_POST["danju_date_end"]}".' 59:59:59');
+        }
+        if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]!=""){
+            $map["b.osm_danju_date"]=array(array("egt","{$_POST["danju_date_start"]}".' 00:00:00'),array("elt","{$_POST["danju_date_end"]}".' 59:59:59'));
+        }
+		
+		
         if($_POST["out_writer"]!=""){
             $map["b.osm_writer"]=array("like","%{$_POST['out_writer']}%");
         }

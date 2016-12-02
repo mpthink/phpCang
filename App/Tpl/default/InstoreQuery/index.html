@@ -91,6 +91,9 @@
                    <input name="in_writer" type="hidden" id="in_writer" value="<?php echo $in_writer;?>" size="30" />
                    <input name="in_operator" type="hidden" id="in_operator" value="<?php echo $in_operator;?>" size="30" />
                    <input name="in_status" type="hidden" id="in_status" value="<?php echo $in_status;?>" size="30" />
+				   <!--add for danju-->
+				   <input name="danju_date_start" type="hidden" id="danju_date_start" value="<?php echo $danju_date_start;?>" size="30" />
+                   <input name="danju_date_end" type="hidden" id="danju_date_end" value="<?php echo $danju_date_end;?>" size="30" />
                    <input class="btn" type="submit" value="Excel导出" />
 
            </td>
@@ -217,6 +220,12 @@
       <td align="left"><input name="ism_writer" type="text" id="ism_writer" size="28" /></td>
       <td align="right">制单日期：</td>
       <td align="left">从&nbsp;<input name="ism_date_start" type="text" class="textfield01" id="ism_date_start" size="10" />&nbsp;到&nbsp;<input name="ism_date_end" type="text" class="textfield01" id="ism_date_end" size="10" /></td>
+    </tr>
+	<tr>
+      <td height="35" align="right">单据日期：</td>
+	  <td align="left">从&nbsp;<input name="ism_danju_start" type="text" class="textfield01" id="ism_danju_start" size="10" />&nbsp;到&nbsp;<input name="ism_danju_end" type="text" class="textfield01" id="ism_danju_end" size="10" /></td>
+	   <td align="right"></td>
+      <td align="left"></td> 
     </tr>
   </table>
 </div>

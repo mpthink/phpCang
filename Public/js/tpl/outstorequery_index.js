@@ -1,5 +1,7 @@
 ﻿$("#osm_date_start").datepicker({changeYear: true});
 $("#osm_date_end").datepicker({changeYear: true});
+$("#osm_danju_start").datepicker({changeYear: true});
+$("#osm_danju_end").datepicker({changeYear: true});
 $("#fastSearch").click(function () {
     window.location.href = "./index.php?s=/OutstoreQuery/index/searchBy/" + $("#searchBy").val() + "/keyword/" + $("#keyword").val()
 });
@@ -55,6 +57,8 @@ function toSearch() {
         var p = g.find("input[name='osm_date_end']").val();
         var q = g.find("input[name='oss_prodname']").val();
         var r = g.find("select[name='osm_status']").val();
+		var s = g.find("input[name='osm_danju_start']").val();
+		var t = g.find("input[name='osm_danju_end']").val();
         action_url = "./index.php?s=/OutstoreQuery/index";
         if (h != "")action_url += "/osm_danju_no/" + h;
         if (i != '请输入关键字或空格')action_url += "/osm_buyerunit/" + i;
@@ -66,6 +70,10 @@ function toSearch() {
         if (o != "")action_url += "/osm_date_start/" + o;
         if (p != "")action_url += "/osm_date_end/" + p;
         if (r != "")action_url += "/osm_status/" + r;
+		
+		if (s != "")action_url += "/osm_danju_start/" + s;
+		if (t != "")action_url += "/osm_danju_end/" + t;
+		
         if (q != "请输入关键字或空格")action_url += "/oss_prodname/" + encodeURIComponent(q);
         window.location.href = encodeURI(action_url)
     }, '取消': function () {

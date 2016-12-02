@@ -90,6 +90,9 @@
                     <input name="out_writer" type="hidden" id="out_writer" value="<?php echo $out_writer;?>" size="30" />
                     <input name="out_operator" type="hidden" id="out_operator" value="<?php echo $out_operator;?>" size="30" />
                     <input name="out_status" type="hidden" id="out_status" value="<?php echo $out_status;?>" size="30" />
+					<!--add for danju-->
+				   <input name="danju_date_start" type="hidden" id="danju_date_start" value="<?php echo $danju_date_start;?>" size="30" />
+                   <input name="danju_date_end" type="hidden" id="danju_date_end" value="<?php echo $danju_date_end;?>" size="30" />
                     <input class="btn" type="submit" value="Excel导出" />
             </td>
         </tr>
@@ -218,6 +221,12 @@
               </select>
           </td>
         </tr>
+		<tr>
+		  <td height="35" align="right">单据日期：</td>
+		  <td align="left">从&nbsp;<input name="osm_danju_start" type="text" class="textfield01" id="osm_danju_start" size="10" />&nbsp;到&nbsp;<input name="osm_danju_end" type="text" class="textfield01" id="osm_danju_end" size="10" /></td>
+		   <td align="right"></td>
+		  <td align="left"></td> 
+		</tr>
       </table>
     </div>
   </div>

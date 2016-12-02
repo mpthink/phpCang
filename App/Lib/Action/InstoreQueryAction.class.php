@@ -58,6 +58,24 @@ class InstoreQueryAction extends AppAction{
             $this->assign("in_date_start",$_GET['ism_date_start']);
             $this->assign("in_date_end",$_GET['ism_date_end']);
         }
+		//add for searching by danju date
+		if($_GET["ism_danju_start"]!=""&&$_GET["ism_danju_end"]=="")
+        {
+            $map["ism_danju_date"]=array("egt","{$_GET['ism_danju_start']}".' 00:00:00');
+            $this->assign("danju_date_start",$_GET['ism_danju_start']);
+        }
+        if($_GET["ism_danju_start"]==""&&$_GET["ism_danju_end"]!="")
+        {
+            $map["ism_danju_date"]=array("elt","{$_GET['ism_danju_end']}".' 59:59:59');
+            $this->assign("danju_date_end",$_GET['ism_danju_end']);
+        }
+        if($_GET["ism_danju_start"]!=""&&$_GET["ism_danju_end"]!=""){
+            $map["ism_danju_date"]=array(array("egt","{$_GET['ism_danju_start']}".' 00:00:00'),array("elt","{$_GET['ism_danju_end']}".' 59:59:59'));
+            $this->assign("danju_date_start",$_GET['ism_danju_start']);
+            $this->assign("danju_date_end",$_GET['ism_danju_end']);
+        }
+		
+		
         if($_GET["iss_prodname"]!=""){
             $prodname = urldecode($_GET['iss_prodname']);
             $map["iss_prodname"]=array("like","%{$prodname}%");
@@ -67,7 +85,7 @@ class InstoreQueryAction extends AppAction{
             $map["c.sto_name"]=array("like","%{$_GET['iss_store']}%");
             $this->assign("in_store",$_GET['iss_store']);
         }
-		
+	
 		//添加这个条件是因为分仓后，分仓的数据要在详细列表里面显示，在iss表里面不显示出来
 		$map['iss_id_p']=array("elt",0);
 		
@@ -488,6 +506,23 @@ class InstoreQueryAction extends AppAction{
         if($_POST["in_date_start"]!=""&&$_POST["in_date_end"]!=""){
             $map["b.ism_date"]=array(array("egt","{$_POST["in_date_start"]}".' 00:00:00'),array("elt","{$_POST["in_date_end"]}".' 59:59:59'));
         }
+		
+		//add for danju date
+		if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]=="")
+        {
+            $map["b.ism_danju_date"]=array("egt","{$_POST["danju_date_start"]}".' 00:00:00');
+        }
+        if($_POST["danju_date_start"]==""&&$_POST["danju_date_end"]!="")
+        {
+            $map["b.ism_danju_date"]=array("elt","{$_POST["danju_date_end"]}".' 59:59:59');
+        }
+        if($_POST["danju_date_start"]!=""&&$_POST["danju_date_end"]!=""){
+            $map["b.ism_danju_date"]=array(array("egt","{$_POST["danju_date_start"]}".' 00:00:00'),array("elt","{$_POST["danju_date_end"]}".' 59:59:59'));
+        }
+		
+		//var_dump($map);
+		
+		
         if($_POST["in_writer"]!=""){
             $map["b.ism_writer"]=array("like","%{$_POST['in_writer']}%");
         }

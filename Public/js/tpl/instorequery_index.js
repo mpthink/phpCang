@@ -30,6 +30,8 @@ function toSearch() {
         var p = g.find("input[name='ism_date_end']").val();
         var q = g.find("input[name='iss_prodname']").val();
         var r = g.find("select[name='ism_status']").val();
+		var s = g.find("input[name='ism_danju_start']").val();
+		var t = g.find("input[name='ism_danju_end']").val();
         action_url = "./index.php?s=/InstoreQuery/index";
         if (h != "")action_url += "/ism_danju_no/" + h;
         if (i != '请输入关键字或空格')action_url += "/ism_sellerunit/" + i;
@@ -40,6 +42,9 @@ function toSearch() {
         if (n != "")action_url += "/ism_writer/" + n;
         if (o != "")action_url += "/ism_date_start/" + o;
         if (p != "")action_url += "/ism_date_end/" + p;
+		if (s != "")action_url += "/ism_danju_start/" + s;
+		if (t != "")action_url += "/ism_danju_end/" + t;
+		
         if (q != '请输入关键字或空格')action_url += "/iss_prodname/" + encodeURIComponent(q);
         if (r != "")action_url += "/ism_status/" + r;
         window.location.href = encodeURI(action_url)
@@ -49,6 +54,10 @@ function toSearch() {
 };
 $("#ism_date_start").datepicker();
 $("#ism_date_end").datepicker();
+
+$("#ism_danju_start").datepicker();
+$("#ism_danju_end").datepicker();
+
 $.widget("custom.catcomplete", $.ui.autocomplete, {_renderMenu: function (g, h) {
     var i = this, j = "";
     $.each(h, function (k, l) {
