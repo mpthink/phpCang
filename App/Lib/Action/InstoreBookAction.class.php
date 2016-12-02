@@ -98,7 +98,7 @@ class InstoreBookAction extends AppAction{
             $map["prod_guest"] = trim($_GET['seller']);
         }
 
-        $list=$model->alias("a")->join("twms_prod_cate as b on a.prod_cate=b.pdca_id")->where($map)->order('pdca_id,prod_name')->select();
+        $list=$model->alias("a")->join("twms_prod_cate as b on a.prod_cate=b.pdca_id")->where($map)->order('pdca_name,prod_name')->select();
         foreach($list as $row){
             $result[]=array(
                 'label'=>$row['prod_name'],
