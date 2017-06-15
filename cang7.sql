@@ -18,6 +18,9 @@
 --
 -- Table structure for table `twms_backup`
 --
+DROP SCHEMA IF EXISTS `cang7`;
+CREATE SCHEMA IF NOT EXISTS `cang7` DEFAULT CHARACTER SET UTF8;
+USE `cang7`;
 
 DROP TABLE IF EXISTS `twms_backup`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -475,7 +478,7 @@ CREATE TABLE `twms_user` (
 
 LOCK TABLES `twms_user` WRITE;
 /*!40000 ALTER TABLE `twms_user` DISABLE KEYS */;
-INSERT INTO `twms_user` VALUES (13,'admin','管理员','48309e7da0e9e329c879715f691dd252','2016-12-11 08:29:32','127.0.0.1',1),(26,'liaozheng','廖政','98a8f1a22ffc460364a8a34499118103','2015-12-04 06:06:50','192.168.1.104',4),(27,'fuyong','付勇','89a0e507630938a38d2ab093b60aeffe','2015-12-04 10:33:51','192.168.1.100',3),(28,'yushaowen','余绍文','36e1a5072c78359066ed7715f5ff3da8','2016-12-11 01:35:32','127.0.0.1',3),(23,'linjia','林嘉','151c73647a03991869055ae618c64590','2015-12-05 00:50:44','192.168.1.102',3),(29,'zhouling','周玲','4297f44b13955235245b2497399d7a93','2014-01-21 06:12:41',NULL,4),(30,'sunhang','孙航','ce69eeb8ec97e9a8ec3faa0b02ac1545','2015-12-06 01:21:31','192.168.1.112',3),(36,'chengfubiao','程福彪','e27ce8241efc32491d32d269ed56c66a','2015-12-02 03:34:00','192.168.1.101',3),(37,'xiejiangwei','谢江维','48bfe143c7fae6dadebaaf62e07267ab','2016-12-11 05:20:38','192.168.1.3',1),(38,'fujuxiang','付菊香','4297f44b13955235245b2497399d7a93','2015-12-04 06:14:07','192.168.1.104',2),(39,'xiaoqiang','肖强','c3e58d2c4938da7612b6d205b65f9a14','2015-08-31 02:28:57','192.168.1.3',1),(40,'yangyanbao','杨延报','e10adc3949ba59abbe56e057f20f883e','2016-12-11 07:10:16','192.168.1.5',3);
+INSERT INTO `twms_user` VALUES (13,'admin','管理员','48309e7da0e9e329c879715f691dd252','2016-12-11 08:29:32','127.0.0.1',1);
 /*!40000 ALTER TABLE `twms_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
