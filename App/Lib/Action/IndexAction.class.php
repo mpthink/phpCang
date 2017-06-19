@@ -139,10 +139,6 @@ class IndexAction extends AppAction{
             echo 2;
             die;
         }
-        if($_SESSION["verify"]!=md5(trim($_GET["code"]))){
-            echo 3;
-            die;
-        }
         session_start();
         $_SESSION["user"]=$user;
         import('@.ORG.Util.SysLog');
