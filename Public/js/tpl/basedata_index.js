@@ -42,7 +42,7 @@ function toAddProduct() {
         var g = $("#prod_name").val();
         var h = $("#prod_price").val();
         var h1 = $("#prod_realprice").val();
-        var i = $("#prod_count").val();
+        var i = $("#prod_weight").val();
         var j = $("#prod_cate").val();
         var g1 = $('#prod_code').val();
         var g2 = $('#prod_unit').val();
@@ -55,7 +55,7 @@ function toAddProduct() {
         if (g != "")action_url += "/prod_name/" + encodeURIComponent(g);
         if (h != "")action_url += "/prod_price/" + h;
         if (h1 != "")action_url += "/prod_realprice/" + h1;
-        if (i != "")action_url += "/prod_count/" + i;
+        if (i != "")action_url += "/prod_weight/" + i;
         if (g1 != "")action_url += "/prod_code/" + g1;
         if (g2 != "")action_url += "/prod_unit/" + g2;
         if (g3 != "")action_url += "/prod_guest/" + g3;
@@ -74,7 +74,7 @@ function toEditProduct(g) {
             $('#prod_name').val(h.prod_name);
             $('#prod_price').val(h.prod_price);
             $('#prod_realprice').val(h.prod_realprice);
-            $('#prod_count').val(h.prod_count);
+            $('#prod_weight').val(h.prod_weight);
             $('#prod_code').val(h.prod_code);
             $('#prod_unit').val(h.prod_unit);
             $('#prod_volume').val(h.prod_volume);
@@ -86,7 +86,7 @@ function toEditProduct(g) {
         var i = $("#prod_price").val();
         var i1 = $("#prod_realprice").val();
         var j = $("#prod_cate").val();
-        var k = $("#prod_count").val();
+        var k = $("#prod_weight").val();
         var g1 = $('#prod_code').val();
         var g2 = $('#prod_unit').val();
         var g3 = $('#prod_guest').val();
@@ -97,7 +97,7 @@ function toEditProduct(g) {
         if (j != "")action_url += "/prod_cate/" + j;
         if (i != "")action_url += "/prod_price/" + i;
         if (i1 != "")action_url += "/prod_realprice/" + i1;
-        if (k != "")action_url += "/prod_count/" + k;
+        if (k != "")action_url += "/prod_weight/" + k;
         if (g1 != "")action_url += "/prod_code/" + g1;
         if (g2 != "")action_url += "/prod_unit/" + g2;
         if (g3 != "")action_url += "/prod_guest/" + g3;

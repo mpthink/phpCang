@@ -171,7 +171,6 @@ class BaseDataAction extends AppAction{
             echo "<script>alert('货物品名规格在该客户单位已存在，请确认后重新填写!');window.history.back();</script>";
             die;
         }
-
         $model->add($_GET);
         import('@.ORG.Util.SysLog');
         SysLog::writeLog("添加产品". $_GET['prod_name']);

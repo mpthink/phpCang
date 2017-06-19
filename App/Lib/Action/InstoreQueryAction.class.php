@@ -374,12 +374,19 @@ class InstoreQueryAction extends AppAction{
 		$map_sub['iss_id_p'] = array('egt',0);
         $count_plan = $model_sub->where($map_sub)->sum('iss_plancount');
         $count_real = $model_sub->where($map_sub)->sum('iss_count');
-
+		//计算总重量,单位转换为吨
+		$weight_sum = 0;
+		foreach($list_sub as $row){
+			$weight_sum = $weight_sum + $row['iss_count']*$row['prod_weight'];
+		}
+		$weight_sum = $weight_sum/1000;
+		
         $this->assign("main",$main);
         $this->assign("list_sub",$list_sub);
         $this->assign("list_carry",$list_carry);
         $this->assign("count_plan",$count_plan);
         $this->assign("count_real",$count_real);
+		$this->assign("weight_sum",$weight_sum);
         $this->display();
     }
     public function toEdit(){

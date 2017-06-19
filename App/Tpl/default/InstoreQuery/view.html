@@ -124,7 +124,7 @@
           <th>应收数量</th>
           <th>实收数量</th>
 
-        <!-- <th>总价</th> -->
+        <th>重量(吨)</th>
         <th>仓库/库位</th>
         <!-- <th>备注</th> -->
         <?php if($main["ism_status"]==0){ ?><th>操作</th> <?php }?>
@@ -147,6 +147,8 @@
           <td align='center'><?php echo $row_sub["iss_count"]; ?></td>
           <?php } ?>
         
+		<td align='center'><?php echo $row_sub["iss_count"]*$row_sub['prod_weight']/1000; ?></td>
+		
         <td align='center'><?php if($row_sub["sto_kuwei_name"]!=""){echo $row_sub["sto_name"]."/".$row_sub["sto_kuwei_name"];} else {echo $row_sub["sto_name"];} ?></td>
 		
         <input name='iss_id[]' index='<?php echo $key; ?>' type='hidden' id='iss_id_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_id']; ?>" />
@@ -162,7 +164,8 @@
           <td align='center'>合计：</td>
           <td align='center'><?php echo $count_plan; ?></td>
           <td align='center'><?php echo $count_real; ?></td>
-        <td class="tdpage" colspan="1"></td>
+        <td align='center'><?php echo $weight_sum; ?></td>
+		<td class="tdpage" colspan="1"></td>
 		<?php if($main["ism_status"]==0){ ?>  <td colspan="1"></td>  <?php }?>
       </tr>
     </table>
