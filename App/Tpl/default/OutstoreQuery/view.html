@@ -119,7 +119,7 @@
           <th>应发数量</th>
           <th>实发数量</th>
 
-        <!-- <th>总价</th> -->
+        <th>重量(吨)</th>
         <th>仓库/库位</th>
         <!-- <th>备注</th> -->
         <!--<th>操作</th>-->
@@ -142,6 +142,8 @@
           <td align='center'><?php echo $row_sub["oss_count"]; ?></td>
 
           <?php } ?>
+		  
+		  <td align='center'><?php echo $row_sub["oss_count"]*$row_sub['prod_weight']/1000; ?></td>
 
         <td align='center'><?php if($row_sub["sto_kuwei_name"]==""){echo $row_sub["sto_name"];}else{echo $row_sub["sto_name"]."/".$row_sub["sto_kuwei_name"];} ?></td>
 	  </tr>
@@ -151,6 +153,7 @@
           <td align='center'>合计：</td>
           <td align='center'><?php echo $count_plan; ?></td>
           <td align='center'><?php echo $count_real; ?></td>
+		  <td align='center'><?php echo $weight_sum; ?></td>
           <td class="tdpage" colspan="1"></td>
       </tr>
     </table>
