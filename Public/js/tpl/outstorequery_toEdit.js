@@ -94,13 +94,13 @@ function bindAutoComplete(g) {
         $("#oss_cate_" + g).val(i.item.iss_cate);
         $("#oss_cate_name_" + g).val(i.item.pdca_name);
         $("#oss_insubid_" + g).val(i.item.iss_id);
-        //$("#oss_store_" + g).val(i.item.iss_store);
         $("#oss_unit_" + g).val(i.item.prod_unit);
 		if(i.item.sto_parrent_id==0){
 			$("#oss_store_name_" + g).val(i.item.sto_name);
 		}else{
 			$("#oss_store_name_" + g).val(i.item.sto_name+"/"+i.item.sto_kuwei_name);
 		}
+		$("#oss_store_id_" + g).val(i.item.sto_id);
         //$("#oss_total_" + g).val(i.item.iss_price * 1)
         $("#oss_plancount_" + g).focus()
     }})
