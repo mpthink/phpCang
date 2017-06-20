@@ -35,17 +35,11 @@
 
 
 </head>
-<body>
-
-
+<body>	
 
 <div class="container">
-<div align="left"><font size="3" color="black">四川雄鹰展翅物流有限责任公司</font></div>
-    <br>
-    <br>
+<div align="left"><font size="3" color="black">四川雄鹰展翅物流有限责任公司(海口分公司)</font></div>
   <div align="center"><font size="5" color="black"><b>入库单据</b></font></div>
-
-  <br>
   <form action="__URL__/doApprove" method="post">
       <table width="100%">
          <tr>
@@ -55,29 +49,18 @@
              <td width="15%"><?php echo $main['ism_danju_no'] ?></td>
              <td width="10%" align="right">单据日期：</td>
              <td width="15%"><?php echo substr($main['ism_danju_date'],0,10) ?></td>
-
          </tr>
 
          <tr>
-             <td width="15%" style="line-height:150%" align="right">流水编号：</td>
+		     <td width="15%" style="line-height:150%" align="right">流水编号：</td>
              <td width="30%"><?php echo $main['ism_sn'] ?></td>
-             <td width="15%" align="right">搬运组：</td>
-             <td width="15%">
-                 <?php  if($main['ism_status']>0) { echo $main['ism_carry'];}else{ ?>
-                 <select name='ism_carry' id="ism_carry">
-                     <option value=''>--请选择--</option>
-                     <?php foreach($list_carry as $key=>$row_carry){ ?>
-                     <option value="<?php echo $row_carry['pdcarry_name']?>" <?php if($main['ism_carry']==$row_carry['pdcarry_name']) echo "selected='true'"?>><?php echo $row_carry['pdcarry_name']?></option>
-                     <?php }?>
-                 </select>
-                 <?php }?>
-             </td>
+			 <td width="15%" style="line-height:150%" align="right">制单日期：</td>
+             <td width="15%"><?php echo substr($main['ism_date'],0,10) ?></td>
              <td width="10%" align="right">车牌号：</td>
              <td width="15%"><?php echo $main['ism_phone'] ?></td>
-
          </tr>
 
-         <tr>
+         <tr class="noPrint">
              <td width="15%" style="line-height:150%" align="right">单据状态：</td>
              <td width="30%">
                  <?php
@@ -92,9 +75,18 @@
              <td width="15%"><?php echo substr($main['ism_status_time'],0,10) ?></td>
 
          </tr>
-          <tr>
-              <td width="15%" style="line-height:150%" align="right">制单日期：</td>
-              <td width="30%"><?php echo substr($main['ism_date'],0,10) ?></td>
+          <tr class="noPrint">
+              <td width="15%" align="right">搬运组：</td>
+             <td width="30%">
+                 <?php  if($main['ism_status']>0) { echo $main['ism_carry'];}else{ ?>
+                 <select name='ism_carry' id="ism_carry">
+                     <option value=''>--请选择--</option>
+                     <?php foreach($list_carry as $key=>$row_carry){ ?>
+                     <option value="<?php echo $row_carry['pdcarry_name']?>" <?php if($main['ism_carry']==$row_carry['pdcarry_name']) echo "selected='true'"?>><?php echo $row_carry['pdcarry_name']?></option>
+                     <?php }?>
+                 </select>
+                 <?php }?>
+             </td>
               <td width="15%" align="right">复核人：</td>
               <td width="15%"><?php echo $main['ism_reviwer'] ?></td>
               <td width="10%" align="right">复核日期：</td>

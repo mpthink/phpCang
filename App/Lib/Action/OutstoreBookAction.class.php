@@ -2,6 +2,9 @@
 
 class OutstoreBookAction extends AppAction{
     public function index() {
+		$model_deliver=M("prod_deliver");
+        $list_deliver=$model_deliver->select();
+		$this->assign("list_deliver",$list_deliver);
         $this->assign('osm_sn','OU-'.date('Ymd-His-').rand(100,999));
         $this->display();
     }

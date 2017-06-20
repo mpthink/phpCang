@@ -269,8 +269,9 @@ CREATE TABLE `twms_outstore_main` (
   `osm_submit_time` timestamp NULL DEFAULT NULL,
   `osm_rollbacker` varchar(15) DEFAULT NULL,
   `osm_rollback_time` timestamp NULL DEFAULT NULL,
+  `osm_deliver` int(2) DEFAULT NULL,
   PRIMARY KEY (`osm_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,6 +280,7 @@ CREATE TABLE `twms_outstore_main` (
 
 LOCK TABLES `twms_outstore_main` WRITE;
 /*!40000 ALTER TABLE `twms_outstore_main` DISABLE KEYS */;
+INSERT INTO `twms_outstore_main` VALUES (14,'OU-20170620-194441-829','四川新兴格力电器有限责任公司','2017-06-20 11:44:52','管理员','','管理员',NULL,'TEST2','2017-06-18 16:00:00',0,'吴明书','',1,'2017-06-20 13:45:36',NULL,'',NULL,NULL,'管理员','2017-06-20 13:44:40',NULL,NULL,NULL),(13,'OU-20170620-194300-203','四川新兴格力电器有限责任公司','2017-06-20 11:43:24',NULL,'','管理员',NULL,'TEST1','2017-06-18 16:00:00',0,'','',-1,'0000-00-00 00:00:00',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,17),(15,'OU-20170620-231033-494','四川新兴格力电器有限责任公司','2017-06-20 15:18:30',NULL,'','管理员',NULL,'test3','2017-06-19 16:00:00',0,'','',0,'0000-00-00 00:00:00',NULL,'',NULL,NULL,'管理员','2017-06-20 15:19:20',NULL,NULL,18);
 /*!40000 ALTER TABLE `twms_outstore_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -482,6 +484,34 @@ LOCK TABLES `twms_user` WRITE;
 INSERT INTO `twms_user` VALUES (13,'admin','管理员','48309e7da0e9e329c879715f691dd252','2016-12-11 08:29:32','127.0.0.1',1);
 /*!40000 ALTER TABLE `twms_user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `twms_prod_deliver`
+--
+
+DROP TABLE IF EXISTS `twms_prod_deliver`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `twms_prod_deliver` (
+  `pddeliver_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pddeliver_name` varchar(30) DEFAULT NULL,
+  `pddeliver_phone` varchar(30) DEFAULT NULL,
+  `pddeliver_address` varchar(100) DEFAULT NULL,
+  `pddeliver_note` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`pddeliver_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `twms_prod_deliver`
+--
+
+LOCK TABLES `twms_prod_deliver` WRITE;
+/*!40000 ALTER TABLE `twms_prod_deliver` DISABLE KEYS */;
+INSERT INTO `twms_prod_deliver` VALUES (17,'test','1234','2345','3456'),(18,'小东','13438960999','成都市天府新区华阳街道办','海尔冰箱华阳');
+/*!40000 ALTER TABLE `twms_prod_deliver` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -491,5 +521,7 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+
 
 -- Dump completed on 2016-12-11 18:00:25

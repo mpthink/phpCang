@@ -133,3 +133,14 @@ $.widget("custom.catcomplete22", $.ui.autocomplete, {_renderMenu: function (g, h
 }});
 bindAutoComplete22();
 $("#osm_danju_date").datepicker();
+
+//add for deliver info
+$("#osm_deliver").change(function(){
+	var deliverId = $('#osm_deliver').val();
+	if (deliverId != ""){
+	   	$.getJSON("./index.php?s=/BaseData/getProdDeliverById/pddeliver_id/" + deliverId, function (data) {
+			$('#osm_deliver_phone').val(data.pddeliver_phone);
+			$('#osm_deliver_address').val(data.pddeliver_address);
+      })
+	}
+})

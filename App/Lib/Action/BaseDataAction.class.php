@@ -443,5 +443,55 @@ class BaseDataAction extends AppAction{
         $one=$model->where(array("pdcarry_id"=>$_GET['pdcarry_id']))->find();
         echo json_encode($one);
     }
+	
+	
+	//收货人操作
+	public function deliver() {
+        $model=M("prod_deliver");
+        $count = $model->count();
+        $Page = new Page($count,C('PAGE_SIZE'));
+        $show = $Page->show();
+        $this->assign('page',$show);
+        $list=$model->limit($Page->firstRow.','.$Page->listRows)->order("pddeliver_id desc")->select();
+        $this->assign("list",$list);
+        $this->assign("action","deliver");
+        $this->display();
+    }
+
+    public function doAddDeliver(){
+        $model=M("prod_deliver");
+        $model->add($_GET);
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("添加收货人成功");
+        $this->redirect("deliver");
+    }
+
+    public function toEditDeliver() {
+        $model=M("prod_deliver");
+        $one=$model->where(array("pddeliver_id"=>$_GET['pddeliver_id']))->find();
+        $this->assign("one",$one);
+        $this->display();
+    }
+
+    public function doEditDeliver(){
+        $model=M("prod_deliver");
+        $model->save($_GET);
+        $this->redirect("deliver");
+    }
+
+
+    public function deleteDeliver() {
+        $model=M("prod_deliver");
+        $model->where($_GET)->delete();
+        import('@.ORG.Util.SysLog');
+        SysLog::writeLog("删除收货人成功");
+        $this->redirect("deliver");
+    }
+
+    public function getProdDeliverById() {
+        $model=M("prod_deliver");
+        $one=$model->where(array("pddeliver_id"=>$_GET['pddeliver_id']))->find();
+        echo json_encode($one);
+    }
 }
 ?>

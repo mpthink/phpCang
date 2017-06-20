@@ -40,29 +40,56 @@
 
 
 <div class="container">
-    <div align="left"><font size="3" color="black">四川雄鹰展翅物流有限责任公司</font></div>
-    <br>
-    <br>
+    <div align="left"><font size="3" color="black">四川雄鹰展翅物流有限责任公司(海口分公司)</font></div>
     <div align="center"><font size="5" color="black"><b>出库单据</b></font></div>
-    <br>
-    <br>
   <form action="__URL__/doApprove" method="post">
 
       <table width="100%">
           <tr>
-              <td width="15%" style="line-height:150%" align="right">客户单位：</td>
-              <td width="30"><?php echo $main['osm_buyerunit'] ?></td>
-              <td width="15%" align="right">客户单据号：</td>
-              <td width="15%"><?php echo $main['osm_danju_no'] ?></td>
+              <td width="10%" style="line-height:150%" align="right">客户单位：</td>
+              <td width="30%"><?php echo $main['osm_buyerunit'] ?></td>
+              <td width="10%" align="right">单据号：</td>
+              <td width="25%"><?php echo $main['osm_danju_no'] ?></td>
               <td width="10%" align="right">单据日期：</td>
               <td width="15%"><?php echo substr($main['osm_danju_date'],0,10) ?></td>
           </tr>
 
           <tr>
-              <td width="15%" style="line-height:150%" align="right">流水编号：</td>
+			  <td width="10%" style="line-height:150%" align="right">流水编号：</td>
               <td width="30%"><?php echo $main['osm_sn'] ?></td>
-              <td width="15%" align="right">搬运组：</td>
-              <td width="15%">
+			  <td width="10%" style="line-height:150%" align="right">制单日期：</td>
+              <td width="25%"><?php echo substr($main['osm_date'],0,10) ?></td>
+              <td width="10%" align="right">车牌号：</td>
+              <td width="15%"><?php echo $main['osm_phone'] ?></td>
+          </tr>
+		  <!--添加送货人信息-->
+		  <tr>
+			  <td width="10%" style="line-height:150%" align="right">收货人：</td>
+              <td width="30%"><?php echo substr($deliver['pddeliver_name'],0,10) ?></td>
+              <td width="10%" style="line-height:150%" align="right">收货地址：</td>
+              <td width="25%"><?php echo $deliver['pddeliver_address'] ?></td>
+              <td width="10%" align="right">收货电话：</td>
+              <td width="15%"><?php echo $deliver['pddeliver_phone'] ?></td>
+          </tr>
+		  
+		  
+          <tr class="noPrint">
+              <td width="10%" style="line-height:150%" align="right">单据状态：</td>
+              <td width="30%">
+                  <?php
+                  if($main["osm_status"]==2){echo "<font color='#0000FF'><b>已复核</b></font>";};
+                    if($main["osm_status"]==1){echo "<font color='green'><b>已勾单</b></font>";};
+                       if($main["osm_status"]==0){echo "<font color='red'><b>未勾单</b></font>";};
+                  ?>
+              </td>
+              <td width="10%" align="right">勾单人：</td>
+              <td width="25%"><?php echo $main['osm_operator'] ?></td>
+              <td width="10%" align="right">勾单日期：</td>
+              <td width="15%"><?php echo substr($main['osm_status_time'],0,10) ?></td>
+          </tr>
+          <tr class="noPrint">
+              <td width="10%" align="right">搬运组：</td>
+              <td width="30%">
                   <?php  if($main['osm_carry']!=''||$main['osm_status']>0) { echo $main['osm_carry'];}else{ ?>
                   <select name='osm_carry' id="osm_carry">
                       <option value=''>--请选择--</option>
@@ -73,29 +100,8 @@
                   <?php }?>
 
               </td>
-              <td width="10%" align="right">车牌号：</td>
-              <td width="15%"><?php echo $main['osm_phone'] ?></td>
-          </tr>
-
-          <tr>
-              <td width="15%" style="line-height:150%" align="right">单据状态：</td>
-              <td width="30%">
-                  <?php
-                  if($main["osm_status"]==2){echo "<font color='#0000FF'><b>已复核</b></font>";};
-                    if($main["osm_status"]==1){echo "<font color='green'><b>已勾单</b></font>";};
-                       if($main["osm_status"]==0){echo "<font color='red'><b>未勾单</b></font>";};
-                  ?>
-              </td>
-              <td width="15%" align="right">勾单人：</td>
-              <td width="15%"><?php echo $main['osm_operator'] ?></td>
-              <td width="10%" align="right">勾单日期：</td>
-              <td width="15%"><?php echo substr($main['osm_status_time'],0,10) ?></td>
-          </tr>
-          <tr>
-              <td width="15%" style="line-height:150%" align="right">制单日期：</td>
-              <td width="30%"><?php echo substr($main['osm_date'],0,10) ?></td>
-              <td width="15%" align="right">复核人：</td>
-              <td width="15%"><?php echo $main['osm_reviwer'] ?></td>
+              <td width="10%" align="right">复核人：</td>
+              <td width="25%"><?php echo $main['osm_reviwer'] ?></td>
               <td width="10%" align="right">复核日期：</td>
               <td width="15%"><?php echo substr($main['osm_reviwer_time'],0,10) ?></td>
           </tr>

@@ -32,6 +32,9 @@ $("#jump").change(function () {
             break;
         case"5":
             g = "./index.php?s=/BaseData/carry";
+            break;
+		case"6":
+            g = "./index.php?s=/BaseData/deliver";
             break
     }
     ;

@@ -249,6 +249,11 @@ class OutstoreQueryAction extends AppAction{
 		}
 		$weight_sum = $weight_sum/1000;
 		
+		//add for deliver
+		$model_deliver=M("prod_deliver");
+		$deliver=$model_deliver->where(array('pddeliver_id'=>$main['osm_deliver']))->find();
+		$this->assign('deliver',$deliver);
+		
         $this->assign("count_plan",$count_plan);
         $this->assign("count_real",$count_real);
         $this->assign("list_carry",$list_carry);
@@ -272,6 +277,13 @@ class OutstoreQueryAction extends AppAction{
         $list_quality=$model_quality->select();
         $this->assign('list_quality',$list_quality);
 
+		//add for deliver
+		$model_deliver=M("prod_deliver");
+        $list_deliver=$model_deliver->select();
+		$deliver=$model_deliver->where(array('pddeliver_id'=>$main['osm_deliver']))->find();
+		$this->assign('list_deliver',$list_deliver);
+		$this->assign('deliver',$deliver);
+		
         $this->assign('main',$main);
         $this->assign('list_sub',$list_sub);
         $this->display();
