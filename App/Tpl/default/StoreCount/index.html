@@ -85,6 +85,7 @@
                     <?php } ?>
 
                     <th>客户单位</th>
+					<th>操作</th>
                 </tr>
                 <?php echo $temp1."<br>";?>
                 <?php echo $temp2."<br>";?>
@@ -102,7 +103,12 @@
                         <?php echo $row["iss_quality"]; ?>
                     </td>
 					<td style="text-align:center">
-                        <?php echo $row["sto_name"]."/".$row["sto_kuwei_name"]; ?>
+                        <?php if($row["sto_kuwei_name"]==""){
+							echo $row["sto_name"];
+						}else{
+							echo $row["sto_name"]."/".$row["sto_kuwei_name"]; 
+						}
+						?>
                     </td>
                     <td style="text-align:center"><?php echo $row["allcount"]; ?></td>
                     <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
@@ -110,8 +116,9 @@
                     <td style="text-align:center"><?php echo $row["prod_realprice"]; ?></td>
                     <?php } ?>
 
-
                     <td style="text-align:center"><?php echo $row["ism_sellerunit"]; ?></td>
+					
+					<td style="text-align:center"><a href="#" onclick="toMoveStore(<?php echo $row["iss_prod"].",".$row["prod_name"].",".$row["pdca_id"].",".$row["pdca_name"].",".$row["iss_quality"].",".$row["prod_unit"].",".$row["allcount"].",".$row["iss_store"].",".$row["sto_name"].",".$row["sto_kuwei_name"].",".$row["ism_sellerunit"]; ?>)">移库</a></td>
                 </tr>
                 <?php } ?>
                 <tr>

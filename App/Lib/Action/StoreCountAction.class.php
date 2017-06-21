@@ -18,7 +18,7 @@ class StoreCountAction extends AppAction{
         $listRows = $Page->listRows;
         $countsql = "select a.*,b.outcount,(a.incount - ifnull(b.outcount,0)) as allcount
                 from
-                (SELECT sum(iss_count) as `incount`,a.iss_prod,a.iss_quality,a.iss_store,b.pdca_name,d.ism_sellerunit,c.*,e.*
+                (SELECT sum(iss_count) as `incount`,a.iss_prod,a.iss_quality,a.iss_store,b.*,d.ism_sellerunit,c.*,e.*
                 FROM twms_instore_sub a
                 LEFT JOIN twms_prod_cate as b on a.iss_cate=b.pdca_id
                 LEFT JOIN twms_product  as c on iss_prod=prod_id
