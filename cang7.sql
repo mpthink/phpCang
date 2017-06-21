@@ -280,7 +280,6 @@ CREATE TABLE `twms_outstore_main` (
 
 LOCK TABLES `twms_outstore_main` WRITE;
 /*!40000 ALTER TABLE `twms_outstore_main` DISABLE KEYS */;
-INSERT INTO `twms_outstore_main` VALUES (14,'OU-20170620-194441-829','四川新兴格力电器有限责任公司','2017-06-20 11:44:52','管理员','','管理员',NULL,'TEST2','2017-06-18 16:00:00',0,'吴明书','',1,'2017-06-20 13:45:36',NULL,'',NULL,NULL,'管理员','2017-06-20 13:44:40',NULL,NULL,NULL),(13,'OU-20170620-194300-203','四川新兴格力电器有限责任公司','2017-06-20 11:43:24',NULL,'','管理员',NULL,'TEST1','2017-06-18 16:00:00',0,'','',-1,'0000-00-00 00:00:00',NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,17),(15,'OU-20170620-231033-494','四川新兴格力电器有限责任公司','2017-06-20 15:18:30',NULL,'','管理员',NULL,'test3','2017-06-19 16:00:00',0,'','',0,'0000-00-00 00:00:00',NULL,'',NULL,NULL,'管理员','2017-06-20 15:19:20',NULL,NULL,18);
 /*!40000 ALTER TABLE `twms_outstore_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
