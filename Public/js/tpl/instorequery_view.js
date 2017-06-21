@@ -40,7 +40,9 @@ function getRow(temp_iss_id,iss_id_newRow) {
         "<td align='center'><input name='iss_plancount_"+temp_iss_id+"[]' type='text' id='iss_plancount_" + iss_id_newRow + "' size='8' /></td>" +
 		
         "<td align='center'><input name='iss_count_"+temp_iss_id+"[]' type='text' id='iss_count_" + iss_id_newRow + "' size='8' '/></td>" +
-
+		
+		"<td align='center'></td>" +
+		
         "<td align='center'>" + 
 		"<select name='iss_store_big_"+temp_iss_id+"[]' id='iss_store_big_" + iss_id_newRow + "'>" + "</select>" + 
 		"<select name='iss_store_small_"+temp_iss_id+"[]' id='iss_store_small_" + iss_id_newRow + "'>" + "</select>" +

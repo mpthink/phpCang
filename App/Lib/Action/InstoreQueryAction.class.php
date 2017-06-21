@@ -377,7 +377,9 @@ class InstoreQueryAction extends AppAction{
 		//计算总重量,单位转换为吨
 		$weight_sum = 0;
 		foreach($list_sub as $row){
-			$weight_sum = $weight_sum + $row['iss_count']*$row['prod_weight'];
+			if($row['iss_id_p']<=0){
+				$weight_sum = $weight_sum + $row['iss_count']*$row['prod_weight'];
+			}
 		}
 		$weight_sum = $weight_sum/1000;
 		
