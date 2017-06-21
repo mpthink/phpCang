@@ -419,5 +419,78 @@ class StoreCountAction extends AppAction{
         $objWriter->save('php://output');
         exit;
     }
+	//移库，创建出库和入库
+	public function moveStore(){
+		$prod_id = $_GET['prod_id'];
+		$prod_name = $_GET['prod_name'];
+		$pdca_id = $_GET['pdca_id'];
+		$prod_quality = $_GET['prod_quality'];
+		$prod_unit = $_GET['prod_unit'];
+		$prod_allcount = $_GET['prod_allcount'];
+		$source_store_id = $_GET['source_store_id'];
+		$target_store_id = $_GET['target_store_id'];
+		
+		//echo "<script>alert('$source_store_id 测试 $target_store_id ');window.history.back();</script>";
+        //    die;
+		
+		$sellerunit = $_GET['sellerunit'];
+		//创建出库单据  outstore_main
+		$model_outstore_main=M("outstore_main");
+		$outstore_main['osm_sn'] = 'OUT-'.date('Ymd-His-').rand(100,999);
+		$outstore_main['osm_operator'] = $_SESSION['user']['user_realname'];
+		$outstore_main['osm_writer'] = $outstore_main['osm_operator'];
+		$outstore_main['osm_submiter'] = $outstore_main['osm_operator'];
+		$outstore_main['osm_date'] = date('Y-m-d H:i:s');
+		$outstore_main['osm_submit_time'] = $outstore_main['osm_date'];
+		$outstore_main['osm_danju_date'] = $outstore_main['osm_date'];
+		$outstore_main['osm_status_time'] = $outstore_main['osm_date'];
+		$outstore_main['osm_buyerunit'] = $sellerunit;
+		$outstore_main['osm_danju_no'] = '移库-'.date('Ymd');	
+		$outstore_main['osm_carry'] = '其他';
+		$outstore_main['osm_status'] = 1;
+		$outstore_main_id=$model_outstore_main->add($outstore_main);
+		//创建入库单据 outstore_sub
+		$model_outstore_sub=M("outstore_sub");
+		$outstore_sub['oss_mainid'] = $outstore_main_id;
+		$outstore_sub['oss_prod'] = $prod_id;
+		$outstore_sub['oss_prodname'] = $prod_name;
+		$outstore_sub['oss_cate'] = $pdca_id;
+		$outstore_sub['oss_count'] = $prod_allcount;
+		$outstore_sub['oss_plancount'] = $prod_allcount;
+		$outstore_sub['oss_store'] = $source_store_id;
+		$outstore_sub['oss_quality'] = $prod_quality;
+		$outstore_sub['oss_unit'] = $prod_unit;
+		$model_outstore_sub->add($outstore_sub);
+		//创建入库单据 instore_main
+		$model_instore_main=M("instore_main");
+		$instore_main['ism_sn'] = 'IN-'.date('Ymd-His-').rand(100,999);
+		$instore_main['ism_operator'] = $_SESSION['user']['user_realname'];
+		$instore_main['ism_writer'] = $instore_main['ism_operator'];
+		$instore_main['ism_submiter'] = $instore_main['ism_operator'];
+		$instore_main['ism_date'] = date('Y-m-d H:i:s');
+		$instore_main['ism_submit_time'] = $instore_main['ism_date'];
+		$instore_main['ism_danju_date'] = $instore_main['ism_date'];
+		$instore_main['ism_status_time'] = $instore_main['ism_date'];
+		$instore_main['ism_sellerunit'] = $sellerunit;
+		$instore_main['ism_danju_no'] = '移库-'.date('Ymd');	
+		$instore_main['ism_carry'] = '其他';
+		$instore_main['ism_status'] = 1;
+		$instore_main_id=$model_instore_main->add($instore_main);
+		//创建入库单据 instore_sub
+		$model_instore_sub=M("instore_sub");
+		$instore_sub['iss_mainid'] = $instore_main_id;
+		$instore_sub['iss_prod'] = $prod_id;
+		$instore_sub['iss_prodname'] = $prod_name;
+		$instore_sub['iss_cate'] = $pdca_id;
+		$instore_sub['iss_count'] = $prod_allcount;
+		$instore_sub['iss_plancount'] = $prod_allcount;
+		$instore_sub['iss_store'] = $target_store_id;
+		$instore_sub['iss_quality'] = $prod_quality;
+		$instore_sub['iss_unit'] = $prod_unit;
+		$model_instore_sub->add($instore_sub);
+		
+		$this->redirect("index");
+	}
+
 }
 ?>

@@ -77,3 +77,74 @@ function bindQuality() {
     })
 };
 bindQuality();
+
+function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11){
+	var prod_id = a1;
+	var prod_name = a2;
+	var pdca_id = a3;
+	var pdca_name = a4;
+	var prod_quality = a5;
+	var prod_unit = a6;
+	var prod_allcount = a7;
+	var source_store_id = a8;
+	var store_name = a9;
+	var store_kuwei_name = a10;
+	var sellerunit = a11;
+	
+	$("#movedialog").dialog({height: 400, width: 650, title: '产品移库', modal: true, open: function () {
+		$('#move_sellerunit').val(sellerunit);
+		$('#move_prod_name').val(prod_name);
+		$('#move_prod_id').val(prod_id);
+		$('#move_pcda_name').val(pdca_name);
+		$('#move_pcda_id').val(pdca_id);
+		$('#move_iss_quality').val(prod_quality);
+		$('#move_allcount').val(prod_allcount);
+		if(store_kuwei_name == 'invalid'){
+			$('#move_source_store').val(store_name);
+		}else{
+			$('#move_source_store').val(store_name+'/'+store_kuwei_name);
+		}
+		
+		$.get("./index.php?s=/InstoreQuery/geStoreBigClass", function(data) {   
+		  $("#move_store_big").html(data);   
+		});
+
+		$.get("./index.php?s=/InstoreQuery/geStoreSmallClass/bigclass/", function(data) {   
+		  $("#move_store_small").html(data);   
+		});
+	  
+		$("#move_store_big").change(function() {   
+		  var bigclass = $(this).val();   
+		  $.get('./index.php?s=/InstoreQuery/geStoreSmallClass/bigclass/'+bigclass, function(data) {   
+			$("#move_store_small").html(data);   
+		  });   
+		});
+		
+    }, buttons: {"移库": function () {
+        var temp_store_big = $("#move_store_big").val();
+        var temp_store_small = $("#move_store_small").val();
+		var target_store_id;
+		if(temp_store_small != 0){
+			target_store_id = temp_store_small;
+		}else{
+			target_store_id = temp_store_big;
+		}
+		
+		action_url = "./index.php?s=/StoreCount/moveStore";
+		action_url += "/prod_id/"+prod_id;
+		action_url += "/prod_name/"+prod_name;
+		action_url += "/pdca_id/"+pdca_id;
+		action_url += "/prod_quality/"+prod_quality;
+		action_url += "/prod_unit/"+prod_unit;
+		action_url += "/prod_allcount/"+prod_allcount;
+		action_url += "/source_store_id/"+source_store_id;
+		action_url += "/target_store_id/"+target_store_id;
+		action_url += "/sellerunit/"+sellerunit;
+
+        window.location.href = encodeURI(action_url)
+    }, '取消': function () {
+        $(this).dialog("close")
+    }}})
+	
+}
+
