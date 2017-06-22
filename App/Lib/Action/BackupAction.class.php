@@ -30,6 +30,7 @@ class BackupAction extends AppAction{
         $this->redirect('index');
     }
 	
+	//http://localhost/cang/index.php?s=/Backup/repair
 	public function repair(){
         $dbmanage=new DbManager();
         $dbmanage->repair();
