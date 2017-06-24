@@ -164,7 +164,13 @@
       </tr>
     </table>
     </div>
-    制单人：&nbsp;&nbsp;<?php echo $main['osm_writer'] ?>&nbsp;&nbsp;
+	<table width="100%">
+		<tr>
+			<td width="40%">制单人：&nbsp;&nbsp;<?php echo $main['osm_writer'] ?>&nbsp;&nbsp;</td>
+			<td width="30%">司机签收：&nbsp;&nbsp;</td>
+			<td width="30%">客户签收：&nbsp;&nbsp;</td>
+		</tr>
+	</table>
       <input name='osm_id' type='hidden' value='<?php echo $main["osm_id"]; ?>'>
     <!--<input type="submit" value="保存" />-->&nbsp;&nbsp;
       <div class="noPrint" align="center">

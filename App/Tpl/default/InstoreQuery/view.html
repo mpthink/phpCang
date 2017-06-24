@@ -121,7 +121,10 @@
         <!-- <th>备注</th> -->
         <?php if($main["ism_status"]==0){ ?><th>操作</th> <?php }?>
       </tr>
-      <?php foreach($list_sub as $key=>$row_sub){ ?>
+      <?php foreach($list_sub as $key=>$row_sub){ 
+		if($row_sub["iss_id_p"]==-1){
+		}else{
+	  ?>
       <tr id="labelAdd<?php echo $row_sub['iss_id']?>">
         <td align='center'>
 		<?php if($row_sub["iss_id_p"]>0){echo "<font color='#0000FF'>分库：</font>";}  echo $row_sub['prod_name']; ?>
@@ -150,7 +153,7 @@
 		<?php } else {echo "<td></td>";}?>
 		
 	  </tr>
-      <?php } ?>
+      <?php }} ?>
       <tr class="nobg" id="lastLine">
         <td colspan="3"></td>
           <td align='center'>合计：</td>

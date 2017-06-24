@@ -27,7 +27,7 @@ class IndexAction extends AppAction{
         $today_end=date("Y-m-d")." 59:59:59";
         $this_month_start=date('Y-m-d',mktime(0,0,0,date('m'),1,date('Y'))).' 00:00:00';
         $this_month_end=date('Y-m-d',mktime(0,0,0,date('m'),date('t'),date('Y'))).' 59:59:59';
-        $instore_month=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("ism_status_time>'$this_month_start' and ism_status_time<'$this_month_end' and b.ism_status>0 and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_month=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("ism_status_time>'$this_month_start' and ism_status_time<'$this_month_end' and b.ism_status>0 and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
         $instore_month['count']=$instore_month['count']==null?0:$instore_month['count'];
         $instore_month['total']=$instore_month['total']==null?0:$instore_month['total'];
         $this->assign("instore_month",$instore_month);
@@ -37,13 +37,13 @@ class IndexAction extends AppAction{
         $outstore_month['total']=$outstore_month['total']==null?0:$outstore_month['total'];
         $this->assign("outstore_month",$outstore_month);
         
-        $instore_count=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
 		
         $instore_count['count']=$instore_count['count']==null?0:$instore_count['count'];
         $instore_count['total']=$instore_count['total']==null?0:$instore_count['total'];
         $this->assign("instore_count",$instore_count);
         
-        $instore_toady_count=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("ism_status_time>'$today_start' and ism_status_time<'$today_end' and b.ism_status>0 and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_toady_count=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("ism_status_time>'$today_start' and ism_status_time<'$today_end' and b.ism_status>0 and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
 
         $instore_toady_count['count']=$instore_toady_count['count']==null?0:$instore_toady_count['count'];
         $instore_toady_count['total']=$instore_toady_count['total']==null?0:$instore_toady_count['total'];
@@ -67,13 +67,13 @@ class IndexAction extends AppAction{
         $date_re_5=date('Y-m-d',$time-3600*24*5);
         $date_re_6=date('Y-m-d',$time-3600*24*6);
         $date_today=date('Y-m-d');
-        $instore_count_date_re_6=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_6 00:00:00' and ism_status_time<='$date_re_6 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_re_5=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_5 00:00:00' and ism_status_time<='$date_re_5 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_re_4=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_4 00:00:00' and ism_status_time<='$date_re_4 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_re_3=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_3 00:00:00' and ism_status_time<='$date_re_3 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_re_2=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_2 00:00:00' and ism_status_time<='$date_re_2 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_re_1=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_1 00:00:00' and ism_status_time<='$date_re_1 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
-        $instore_count_date_doday=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_today 00:00:00' and ism_status_time<='$date_today 59:59:59' and a.iss_id_p>0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_6=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_6 00:00:00' and ism_status_time<='$date_re_6 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_5=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_5 00:00:00' and ism_status_time<='$date_re_5 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_4=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_4 00:00:00' and ism_status_time<='$date_re_4 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_3=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_3 00:00:00' and ism_status_time<='$date_re_3 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_2=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_2 00:00:00' and ism_status_time<='$date_re_2 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_re_1=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_re_1 00:00:00' and ism_status_time<='$date_re_1 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
+        $instore_count_date_doday=$model_insub->alias('a')->join('twms_instore_main b on a.iss_mainid	=b.ism_id')->where("b.ism_status>0 and ism_status_time>='$date_today 00:00:00' and ism_status_time<='$date_today 59:59:59' and a.iss_id_p>=0")->field("sum(iss_count) as count,sum(iss_total) as total")->find();
         $instore_count_date_re_6['count']=$instore_count_date_re_6['count']==null?0:$instore_count_date_re_6['count'];
         $instore_count_date_re_5['count']=$instore_count_date_re_5['count']==null?0:$instore_count_date_re_5['count'];
         $instore_count_date_re_4['count']=$instore_count_date_re_4['count']==null?0:$instore_count_date_re_4['count'];
