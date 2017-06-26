@@ -91,7 +91,7 @@ class OutstoreBookAction extends AppAction{
             $data_sub["oss_prodname"]=$_POST["oss_prodname"][$i];
 
             $data_sub["oss_quality"]=$_POST["oss_quality"][$i]; //new add
-            $data_sub["oss_unit"]=$_POST["oss_unit"][$i]; //new add
+            //$data_sub["oss_unit"]=$_POST["oss_unit"][$i]; //new add
 
             $data_sub["oss_prod"]=$_POST["oss_prod"][$i];
             //$data_sub["oss_price"]=$_POST["oss_price"][$i];
@@ -175,6 +175,7 @@ class OutstoreBookAction extends AppAction{
 					'category'=>$row['pdca_name'],
 					'value'=>$row['prod_name'],
 					'prod_unit'=>$row['prod_unit'],
+					'prod_life'=>$row['prod_life'],
 					'iss_prod'=>$row['iss_prod'],
 					'iss_id'=>$row['iss_id'],
 					//为仓库增加两个字段，分别为库位id和仓库id

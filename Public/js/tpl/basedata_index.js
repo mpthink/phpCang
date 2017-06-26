@@ -51,6 +51,7 @@ function toAddProduct() {
         var g2 = $('#prod_unit').val();
         var g3 = $('#prod_guest').val();
         var g4 = $('#prod_volume').val();
+		var g5 = $('#prod_life').val();
 
 
         action_url = "./index.php?s=/BaseData/doAddProduct";
@@ -63,6 +64,7 @@ function toAddProduct() {
         if (g2 != "")action_url += "/prod_unit/" + g2;
         if (g3 != "")action_url += "/prod_guest/" + g3;
         if (g4 != "")action_url += "/prod_volume/" + g4;
+		if (g5 != "")action_url += "/prod_life/" + g5;
 
 
         window.location.href = encodeURI(action_url)
@@ -81,7 +83,8 @@ function toEditProduct(g) {
             $('#prod_code').val(h.prod_code);
             $('#prod_unit').val(h.prod_unit);
             $('#prod_volume').val(h.prod_volume);
-            $('#prod_guest').val(h.prod_guest)
+            $('#prod_guest').val(h.prod_guest);
+			$('#prod_life').val(h.prod_life);
 
         })
     }, buttons: {"保存": function () {
@@ -94,6 +97,7 @@ function toEditProduct(g) {
         var g2 = $('#prod_unit').val();
         var g3 = $('#prod_guest').val();
         var g4 = $('#prod_volume').val();
+		var g5 = $('#prod_life').val();
 
         action_url = "./index.php?s=/BaseData/doEditProduct/prod_id/" + g;
         if (h != "")action_url += "/prod_name/" + encodeURIComponent(h);
@@ -105,6 +109,7 @@ function toEditProduct(g) {
         if (g2 != "")action_url += "/prod_unit/" + g2;
         if (g3 != "")action_url += "/prod_guest/" + g3;
         if (g4 != "")action_url += "/prod_volume/" + g4;
+		if (g5 != "")action_url += "/prod_life/" + g5;
 
         window.location.href = encodeURI(action_url)
     }, '取消': function () {

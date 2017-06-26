@@ -9,7 +9,9 @@ function getRow(g, h) {
         "<td align='center'><select name='oss_quality[]' id='oss_quality_" + g + "'>"+
         "</select>" +"</td>" +
 
-        "<td align='center'><input name='oss_unit[]' type='text' id='oss_unit_" + g + "' size='8' /></td>" +
+        "<td align='center'><input name='oss_unit[]' type='text' id='oss_unit_" + g + "' size='8' disabled /></td>" +
+		
+		"<td align='center'><input name='oss_life[]' type='text' id='oss_life_" + g + "' size='8' disabled /></td>" +
 
         "<td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='oss_count[]' type='text' id='oss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +
@@ -104,6 +106,8 @@ function bindAutoComplete(g) {
 		$("#oss_store_id_" + g).val(i.item.sto_id);
 		
         $("#oss_unit_" + g).val(i.item.prod_unit);
+		$("#oss_life_" + g).val(i.item.prod_life);
+		
         $("#oss_plancount_" + g).focus()
         //$("#oss_total_" + g).val(i.item.iss_price * 1)
     }})

@@ -42,7 +42,7 @@ class InstoreBookAction extends AppAction{
         for($i=0;$i<count($_POST["row_count"]);$i++){
             $data_sub["iss_mainid"]=$main_id;
             $data_sub["iss_quality"]=$_POST["iss_quality"][$i]; //new add
-            $data_sub["iss_unit"]=$_POST["iss_unit"][$i]; //new add
+            //$data_sub["iss_unit"]=$_POST["iss_unit"][$i]; //new add
             $data_sub["iss_prod"]=$_POST["iss_prod"][$i];
             $data_sub["iss_prodname"]=$_POST["iss_prodname"][$i];
             //$data_sub["iss_price"]=$_POST["iss_price"][$i];
@@ -60,9 +60,7 @@ class InstoreBookAction extends AppAction{
 			}
 			
             $data_sub["iss_cate"]=$_POST["iss_cate"][$i];
-			//因为单据项排序增加一个时间戳的字段
 			
-             $data_sub['iss_insert_timestamp']=microtime(true)*10000;
 			$data_sub['iss_insert_order']=$i;
             $model_sub->add($data_sub);
             //$data_main["ism_total"]+=$_POST["iss_total"][$i];
@@ -108,6 +106,7 @@ class InstoreBookAction extends AppAction{
                 'prod_name'=>$row['prod_name'],
                 'prod_price'=>$row['prod_price'],
                 'prod_unit'=>$row['prod_unit'],
+				'prod_life'=>$row['prod_life'],
                 'prod_cate'=>$row['prod_cate'],
                 'prod_code'=>$row['prod_code'],
                 'pdca_name'=>$row['pdca_name']

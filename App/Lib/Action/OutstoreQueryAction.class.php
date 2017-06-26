@@ -446,7 +446,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_danju_date','客户单据日期'),
                 array('oss_prodname','品名规格'),
                 array('pdca_name','货物类别'),
-                array('oss_unit','计价单位'),
+                array('prod_unit','计价单位'),
                 array('oss_quality','质量类别'),
                 array('oss_plancount','应发数量'),
                 array('oss_count','实发数量'),
@@ -473,7 +473,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_danju_date','客户单据日期'),
                 array('oss_prodname','品名规格'),
                 array('pdca_name','货物类别'),
-                array('oss_unit','计价单位'),
+                array('prod_unit','计价单位'),
                 array('oss_quality','质量类别'),
                 array('oss_plancount','应发数量'),
                 array('oss_count','实发数量'),
@@ -487,7 +487,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,pdca_name,oss_unit,oss_quality,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,pdca_name,prod_unit,oss_quality,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
         }
 
         $model_sub=M("outstore_sub");

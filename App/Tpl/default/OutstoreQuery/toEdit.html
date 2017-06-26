@@ -109,7 +109,7 @@
           <th>质量类别</th>
           <th>单位</th>
 
-          <!--<th>装卸单价</th> -->
+          <th>保质期(月)</th>
           <th>应发数量</th>
           <th>实发数量</th>
 
@@ -136,14 +136,16 @@
 
 
           </td>
-          <td align='center'><input name='oss_unit[]' type='text' id='oss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_unit']; ?>"/></td>
+          <td align='center'><input name='oss_unit[]' type='text' id='oss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>" disabled /></td>
+		  <td align='center'><input name='oss_life[]' type='text' id='oss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
+		  
           <td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_plancount']; ?>"/></td>
           <td align='center'><input name='oss_count[]' type='text' id='oss_count_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_count']; ?>" onblur='compute(<?php echo $key; ?>)'/></td>
 
 
           <input name='oss_total[]' type='hidden' id='oss_total_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_total']; ?>"/>
           <td align='center'>
-               <input name='oss_store_name[]' id='oss_store_name_<?php echo $key; ?>' size='16' value="<?php echo $row_sub['sto_name']."/".$row_sub['sto_kuwei_name']; ?>"/>
+               <input name='oss_store_name[]' id='oss_store_name_<?php echo $key; ?>' size='16' value="<?php echo $row_sub['sto_name']."/".$row_sub['sto_kuwei_name']; ?>" disabled />
           </td>
 
           <td align='center'>

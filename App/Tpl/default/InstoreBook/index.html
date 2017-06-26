@@ -65,7 +65,7 @@
                             <td width="30%"><input name="ism_sn" type="text" id="ism_sn" size="30"
                                            value="<?php echo $ism_sn; ?>"/></td>
                             <td width="10%" align="right">搬运组：</td>
-                            <td width="20%"><input name="ism_carry" type="text" id="ism_carry" size="30"/></td>
+                            <td width="20%"><input name="ism_carry" type="text" id="ism_carry" size="30" disabled /></td>
                             <td width="10%" align="right">车牌号：</td>
                             <td width="20%"><input name="ism_phone" type="text" id="ism_phone" size="20"/></td>
 
@@ -103,7 +103,7 @@
                         <th>单位</th>
 
 
-                        <!-- <th>装卸单价</th> -->
+                        <th>保质期(月)</th>
                         <th>应收数量</th>
                         <th>实收数量</th>
 
@@ -115,10 +115,7 @@
                 </table>
             </div>
             制单人：<input name="ism_writer" type="text" id="ism_writer" size="20"
-                       value="<?php echo $_SESSION['user']['user_realname']; ?>"/>&nbsp;&nbsp;<input class="btn"
-                                                                                                     type="submit"
-                                                                                                     value="保存"/>&nbsp;&nbsp;<input
-                class="btn" type="button" value="返回" onclick="window.history.back()"/>
+                       value="<?php echo $_SESSION['user']['user_realname']; ?>"/>&nbsp;&nbsp;<input class="btn" type="submit" value="保存"/>&nbsp;&nbsp;<input class="btn" type="button" value="返回" onclick="window.history.back()"/>
         </form>
     </div>
 </div>

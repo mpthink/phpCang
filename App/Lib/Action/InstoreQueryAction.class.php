@@ -253,14 +253,14 @@ class InstoreQueryAction extends AppAction{
 				//存储分仓数据
 				for($j=0;$j<count($_POST["$temp_iss_plancount_id"]);$j++){
 					//从父iss表拷贝的数据
+					
 					$fencang_data['iss_mainid']=$temp_iss_data['iss_mainid'];
 					$fencang_data['iss_prod']=$temp_iss_data['iss_prod'];
 					$fencang_data['iss_prodname']=$temp_iss_data['iss_prodname'];
 					$fencang_data['iss_cate']=$temp_iss_data['iss_cate'];
 					$fencang_data['iss_price']=$temp_iss_data['iss_price'];
 					$fencang_data['iss_quality']=$temp_iss_data['iss_quality'];
-					$fencang_data['iss_unit']=$temp_iss_data['iss_unit'];
-					$fencang_data['iss_insert_timestamp']=$temp_iss_data['iss_insert_timestamp'];
+					
 					//分仓的新数据从表单获取
 					$fencang_data['iss_plancount']=$_POST["$temp_iss_plancount_id"][$j];
 					$fencang_data['iss_count']=$_POST["$temp_iss_count_id"][$j];
@@ -366,7 +366,7 @@ class InstoreQueryAction extends AppAction{
         $list_sub=$model_sub->join('twms_product on iss_prod=prod_id')->
             join('twms_store on sto_id=iss_store')->
             join('twms_prod_cate on pdca_id=iss_cate')->
-            where(array("iss_mainid"=>$_GET['ism_id']))->order('iss_insert_timestamp,iss_id')->select();
+            where(array("iss_mainid"=>$_GET['ism_id']))->order('iss_insert_order,iss_id')->select();
         $model_carry=M("prod_carry");
         $list_carry=$model_carry->select();
 		
@@ -441,7 +441,7 @@ class InstoreQueryAction extends AppAction{
             $data['iss_price']=$_POST['iss_price'][$i];
 
             $data['iss_quality']=$_POST['iss_quality'][$i];
-            $data['iss_unit']=$_POST['iss_unit'][$i];
+            //$data['iss_unit']=$_POST['iss_unit'][$i];
 
             $data['iss_count']=$_POST['iss_count'][$i];
             $data['iss_plancount']=$_POST['iss_plancount'][$i];
@@ -461,7 +461,6 @@ class InstoreQueryAction extends AppAction{
 			}
 			
             $data['iss_remark']=$_POST['iss_remark'][$i];
-            $data['iss_insert_timestamp']=microtime(true)*10000;
 
             $model_main->ism_total+=$data['iss_total'];
             $model_sub->add($data);
@@ -550,7 +549,7 @@ class InstoreQueryAction extends AppAction{
                 array('ism_danju_date','客户单据日期'),
                 array('iss_prodname','品名规格'),
                 array('pdca_name','货物类别'),
-                array('iss_unit','计价单位'),
+                array('prod_unit','计价单位'),
                 array('iss_quality','质量类别'),
                 array('iss_plancount','应收数量'),
                 array('iss_count','实收数量'),
@@ -575,7 +574,7 @@ class InstoreQueryAction extends AppAction{
                 array('ism_danju_date','客户单据日期'),
                 array('iss_prodname','品名规格'),
                 array('pdca_name','货物类别'),
-                array('iss_unit','计价单位'),
+                array('prod_unit','计价单位'),
                 array('iss_quality','质量类别'),
                 array('iss_plancount','应收数量'),
                 array('iss_count','实收数量'),

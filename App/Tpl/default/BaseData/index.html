@@ -70,6 +70,7 @@
             <th>货物编码</th>
             <th>单位</th>
             <th>客户单位</th>
+			<th>保质期(月)</th>
 			<th>单位重量(KG)</th>
           <th>装卸成本单价</th>
             <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4||$_SESSION['user']['user_type']==5){ ?>
@@ -85,6 +86,7 @@
             <td align="center"><?php echo $row["prod_code"]; ?></td>
             <td align="center"><?php echo $row["prod_unit"]; ?></td>
             <td align="center"><?php echo $row["prod_guest"]; ?></td>
+			<td align="center"><?php echo $row["prod_life"]; ?></td>
 			<td align="center"><?php echo $row["prod_weight"]; ?></td>
             <td align="center"><?php echo $row["prod_price"]; ?></td>
             <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
@@ -99,7 +101,7 @@
         </tr>
         <?php } ?>
         <tr class="nobg">
-          <td colspan="7" align="center"><?php echo $page; ?></td>
+          <td colspan="11" align="center"><?php echo $page; ?></td>
         </tr>
       </table>
     </form>
@@ -134,6 +136,10 @@
           <?php } ?>
         </select>
         </td>
+      </tr>
+	  <tr>
+        <td height="30" align="right">保质期(月)： </td>
+        <td align="left"><input name="prod_life" type="text" id="prod_life" size="40" value="<?php echo $one['prod_life']; ?>"/></td>
       </tr>
 	  <tr>
         <td height="30" align="right">单位重量(KG)： </td>

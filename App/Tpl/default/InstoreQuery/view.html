@@ -112,7 +112,7 @@
           <th>质量类别</th>
           <th>单位</th>
 
-        <!-- <th>单价</th> -->
+		  <th>保质期(月)</th>
           <th>应收数量</th>
           <th>实收数量</th>
 
@@ -132,7 +132,8 @@
         <td align='center'><?php echo $row_sub['pdca_name']; ?></td>
 
           <td align='center'><?php echo $row_sub['iss_quality']; ?></td>
-          <td align='center'><?php echo $row_sub['iss_unit']; ?></td>
+          <td align='center'><?php echo $row_sub['prod_unit']; ?></td>
+		  <td align='center'><?php echo $row_sub['prod_life']; ?></td>
 		  
           <?php if(($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==3||$_SESSION['user']['user_type']==5)&&$main["ism_status"]==0){ ?>
           <td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_plancount']; ?>" /></td>
@@ -155,7 +156,7 @@
 	  </tr>
       <?php }} ?>
       <tr class="nobg" id="lastLine">
-        <td colspan="3"></td>
+        <td colspan="4"></td>
           <td align='center'>合计：</td>
           <td align='center'><?php echo $count_plan; ?></td>
           <td align='center'><?php echo $count_real; ?></td>

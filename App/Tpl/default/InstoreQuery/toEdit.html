@@ -52,7 +52,7 @@
               <td width="10%" align="right">流水编号：</td>
               <td width="30%"><input name="ism_sn" type="text" id="ism_sn" size="30" value="<?php echo $main['ism_sn'] ?>" /></td>
               <td width="10%" align="right">搬运组：</td>
-              <td width="20%"><input name="ism_carry" type="text" id="ism_carry" value="<?php echo $main['ism_carry'] ?>" size="20" /></td>
+              <td width="20%"><input name="ism_carry" type="text" id="ism_carry" value="<?php echo $main['ism_carry'] ?>" size="20" disabled /></td>
               <td width="10%" align="right">车牌号：</td>
               <td width="20%"><input name="ism_phone" type="text" id="ism_phone" value="<?php echo $main['ism_phone'] ?>" size="20" /></td>
 
@@ -80,7 +80,7 @@
           <th>质量类别</th>
           <th>单位</th>
 
-        <!-- <th>装卸单价</th> -->
+        <th>保质期(月)</th>
           <th>应收数量</th>
           <th>实收数量</th>
 
@@ -107,7 +107,9 @@
 
 
           </td>
-          <td align='center'><input name='iss_unit[]' type='text' id='iss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_unit']; ?>"/></td>
+          <td align='center'><input name='iss_unit[]' type='text' id='iss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>"/></td>
+		  
+		  <td align='center'><input name='iss_life[]' type='text' id='iss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
 
           <!-- <td align='center'><input name='iss_price[]' type='text' id='iss_price_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_price']; ?>"/></td> -->
           <td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_plancount']; ?>" /></td>

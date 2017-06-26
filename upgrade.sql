@@ -20,3 +20,25 @@ CREATE TABLE `twms_prod_deliver` (
 -- modify twms_outstore_main to store deliver id
 --
 alter table cang7.twms_outstore_main add `osm_deliver` int(2) DEFAULT NULL;
+
+--
+-- modify twms_product, 添加保质期
+--
+alter table cang7.twms_product add `prod_life` int(4) DEFAULT NULL;
+
+---不合理表修改初始值
+alter table cang7.twms_instore_sub drop `iss_unit` varchar(10) DEFAULT NULL;
+alter table cang7.twms_instore_sub modify `iss_quality` varchar(20) DEFAULT NULL;
+alter table cang7.twms_instore_sub drop `iss_insert_timestamp`;
+
+
+alter table cang7.twms_outstore_sub drop `oss_unit` varchar(10) DEFAULT NULL;
+alter table cang7.twms_outstore_sub modify `oss_quality` varchar(20) DEFAULT NULL;
+alter table cang7.twms_outstore_sub modify `oss_insert_order` int(11) DEFAULT NULL;
+
+
+
+
+
+
+

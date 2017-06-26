@@ -36,6 +36,7 @@ function getRow(temp_iss_id,iss_id_newRow) {
         "<td align='center'><div id='iss_quality_" + iss_id_newRow + "'/></td>" +
 
         "<td align='center'></td>" +
+		"<td align='center'></td>" +
 
         "<td align='center'><input name='iss_plancount_"+temp_iss_id+"[]' type='text' id='iss_plancount_" + iss_id_newRow + "' size='8' /></td>" +
 		

@@ -9,7 +9,9 @@ function getRow(g, h) {
         "<td align='center'><select name='iss_quality[]' id='iss_quality_" + g + "'>"+
         "</select>" +"</td>" +
 
-        "<td align='center'><input name='iss_unit[]' type='text' id='iss_unit_" + g + "' size='8' /></td>" +
+        "<td align='center'><input name='iss_unit[]' type='text' id='iss_unit_" + g + "' size='8' disabled /></td>" +
+		
+		"<td align='center'><input name='iss_life[]' type='text' id='iss_life_" + g + "' size='8' disabled /></td>" +
 
         "<td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='iss_count[]' type='text' id='iss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +
@@ -89,6 +91,7 @@ function bindAutoComplete(g) {
         $("#iss_cate_" + g).val(i.item.prod_cate);
         $("#iss_cate_name_" + g).val(i.item.pdca_name);
         $("#iss_unit_" + g).val(i.item.prod_unit);
+		$("#iss_life_" + g).val(i.item.prod_life);
         $("#iss_plancount_" + g).focus()
     }})
 };

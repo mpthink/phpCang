@@ -11,11 +11,13 @@ function getRow(g, h) {
         "</select>" +"</td>" +
 
         "<td align='center'><input name='iss_unit[]' type='text' id='iss_unit_" + g + "' size='8' /></td>" +
-
+		
+		"<td align='center'><input name='iss_life[]' type='text' id='iss_life_" + g + "' size='8' disabled='disabled'/></td>" +
+		
         "<td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='iss_count[]' type='text' id='iss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +
 
-        "<input name='iss_total[]' type='hidden' id='iss_total_" + g + "' size='8'/>" +
+        
         "<td align='center'>" + "<select name='iss_store[]' id='iss_store_" + g + "'>" + "<option value=''>--请选择--</option>" + "</select>" + "</td>" +
 
         "<td align='center'><a href='#' id='linkDelete_" + g + "' name='linkDelete' onclick='deleteRow(" + g + ")'>删除</a></td>" +
@@ -93,6 +95,7 @@ function bindAutoComplete(g) {
         $("#iss_prod_" + g).val(i.item.prod_id);
         $("#iss_prodname_" + g).val(i.item.prod_name);
         $("#iss_unit_" + g).val(i.item.prod_unit);
+		$("#iss_life_" + g).val(i.item.prod_life);
         $("#iss_cate_id_" + g).val(i.item.prod_cate);
         $("#iss_cate_name_" + g).val(i.item.pdca_name);
         $("#iss_plancount_" + g).focus()
