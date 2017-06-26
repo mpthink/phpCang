@@ -45,7 +45,7 @@
           <th>收货人</th>
 		  <th>收货电话</th>
 		  <th>收货地址</th>
-		  <th>其他信息</th>
+		  <th>收货单位</th>
           <th>操作</th>
         </tr>
         <?php foreach($list as $key=>$row){ ?>
@@ -79,7 +79,7 @@
         <td width="65%" align="left"><input name="pddeliver_address" type="text" id="pddeliver_address" size="40" value="<?php echo $one['pddeliver_address']; ?>"/></td>
       </tr>
 	  <tr>
-        <td width="35%" height="30" align="right">其他信息： </td>
+        <td width="35%" height="30" align="right">收货单位： </td>
         <td width="65%" align="left"><input name="pddeliver_note" type="text" id="pddeliver_note" size="50" value="<?php echo $one['pddeliver_note']; ?>"/></td>
       </tr>
     </table>

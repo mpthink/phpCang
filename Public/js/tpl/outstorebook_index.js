@@ -132,6 +132,7 @@ $("#osm_deliver").change(function(){
 	   	$.getJSON("./index.php?s=/BaseData/getProdDeliverById/pddeliver_id/" + deliverId, function (data) {
 			$('#osm_deliver_phone').val(data.pddeliver_phone);
 			$('#osm_deliver_address').val(data.pddeliver_address);
+			$('#osm_deliver_note').val(data.pddeliver_note);
       })
 	}
 })

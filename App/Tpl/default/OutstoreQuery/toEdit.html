@@ -71,22 +71,32 @@
                   </select>
 			  </td>
 			  <td width="10%" align="right">收货人地址：</td>
-              <td width="20%"><input name="osm_deliver_address" type="text" id="osm_deliver_address" size="30" value="<?php echo $deliver['pddeliver_address']; ?>"/></td>
+              <td width="20%"><input name="osm_deliver_address" type="text" id="osm_deliver_address" size="30" value="<?php echo $deliver['pddeliver_address']; ?>" disabled /></td>
               <td width="10%" align="right">收货人电话：</td>
-              <td width="20%"><input name="osm_deliver_phone" type="text" id="osm_deliver_phone" size="20" value="<?php echo $deliver['pddeliver_phone']; ?>"/></td>
+              <td width="20%"><input name="osm_deliver_phone" type="text" id="osm_deliver_phone" size="20" value="<?php echo $deliver['pddeliver_phone']; ?>" disabled /></td>
               
           </tr>
 		  
           <tr>
               <td width="10%" align="right">单据备注：</td>
-              <td width="70%" colspan="4">
+              <td width="60%" colspan="3">
                   <input name="osm_remark" type="text" id="osm_remark" value="<?php echo $main['osm_remark'] ?>" size="45" />
 
               </td>
-              <td width="20%">
-                  <input class="btn" type="button" value="添加项" id="btnAdd"/>
-              </td>
+              <td width="10%" align="right">收货单位：</td>
+              <td width="20%"><input name="osm_deliver_note" type="text" id="osm_deliver_note" size="20" value="<?php echo $deliver['pddeliver_note']; ?>" disabled /></td>
           </tr>
+		  
+		  <tr>
+			<td width="10%" align="right"></td>
+              <td width="30%">
+              </td>
+              <td width="10%" align="right"></td>
+              <td width="20%">
+              </td>
+              <td width="10%"></td>
+              <td width="20%"><input class="btn" type="button" value="添加项" id="btnAdd"/></td>
+		  </tr>
       </table>
 
 
