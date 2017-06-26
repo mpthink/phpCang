@@ -42,7 +42,7 @@ class InstoreBookAction extends AppAction{
         for($i=0;$i<count($_POST["row_count"]);$i++){
             $data_sub["iss_mainid"]=$main_id;
             $data_sub["iss_quality"]=$_POST["iss_quality"][$i]; //new add
-            //$data_sub["iss_unit"]=$_POST["iss_unit"][$i]; //new add
+            $data_sub["iss_make_date"]=$_POST["iss_make_date"][$i]; //new add
             $data_sub["iss_prod"]=$_POST["iss_prod"][$i];
             $data_sub["iss_prodname"]=$_POST["iss_prodname"][$i];
             //$data_sub["iss_price"]=$_POST["iss_price"][$i];

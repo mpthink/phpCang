@@ -35,8 +35,9 @@ function getRow(temp_iss_id,iss_id_newRow) {
 
         "<td align='center'><div id='iss_quality_" + iss_id_newRow + "'/></td>" +
 
-        "<td align='center'></td>" +
-		"<td align='center'></td>" +
+        "<td align='center'><div id='iss_unit_" + iss_id_newRow + "'/></td>" +
+		"<td align='center'><div id='iss_life_" + iss_id_newRow + "'/></td>" +
+		"<td align='center'><div id='iss_make_date_" + iss_id_newRow + "'/></td>" +
 
         "<td align='center'><input name='iss_plancount_"+temp_iss_id+"[]' type='text' id='iss_plancount_" + iss_id_newRow + "' size='8' /></td>" +
 		
@@ -84,6 +85,9 @@ function fenCang(btnId) {
    iss_prodname=tr_cells[0].innerHTML;
    iss_cate_name=tr_cells[1].innerHTML;
    iss_quality=tr_cells[2].innerHTML;
+   iss_unit=tr_cells[3].innerHTML;
+   iss_life=tr_cells[4].innerHTML;
+   iss_make_date=tr_cells[5].innerHTML;
    
    var insertRow=getInsertRowId(tr_index);
    
@@ -92,7 +96,7 @@ function fenCang(btnId) {
    var newRaw = getRow(temp_iss_id,iss_id_newRow);
    $(insertRow).after(newRaw); 
 	
-	bindFenCangData(iss_id_newRow,iss_prodname,iss_cate_name,iss_quality);
+	bindFenCangData(iss_id_newRow,iss_prodname,iss_cate_name,iss_quality,iss_unit,iss_life,iss_make_date);
    
    d++;
 };
@@ -101,6 +105,11 @@ function bindFenCangData(iss_id_newRow,iss_prodname,iss_cate_name,iss_quality) {
 	document.getElementById("iss_prodname_" + iss_id_newRow).innerHTML="分库："+iss_prodname;
 	document.getElementById("iss_cate_name_" + iss_id_newRow).innerHTML=iss_cate_name;
 	document.getElementById("iss_quality_" + iss_id_newRow).innerHTML=iss_quality;
+	
+	document.getElementById("iss_unit_" + iss_id_newRow).innerHTML=iss_unit;
+	document.getElementById("iss_life_" + iss_id_newRow).innerHTML=iss_life;
+	document.getElementById("iss_make_date_" + iss_id_newRow).innerHTML=iss_make_date;
+	
 	$("#iss_plancount_" + iss_id_newRow).focus();
 	
 	$.get("./index.php?s=/InstoreQuery/geStoreBigClass", function(data) {   

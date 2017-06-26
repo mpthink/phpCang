@@ -81,6 +81,7 @@
           <th>单位</th>
 
         <th>保质期(月)</th>
+		<th>生产日期</th>
           <th>应收数量</th>
           <th>实收数量</th>
 
@@ -93,7 +94,7 @@
       <tr id='row_<?php echo $key; ?>'>
         <td align='center'><?php echo $key+1; ?></td>
         <td align='center'>
-        <input name='iss_prodname[]' index='<?php echo $key; ?>' type='text' id='iss_prodname_<?php echo $key; ?>' size='40' value="<?php echo $row_sub['iss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
+        <input name='iss_prodname[]' index='<?php echo $key; ?>' type='text' id='iss_prodname_<?php echo $key; ?>' size='30' value="<?php echo $row_sub['iss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
         </td>
         <td align='center'><input name='iss_cate_name[]' type='text' id='iss_cate_name_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['pdca_name']; ?>" disabled="disabled"/></td>
 
@@ -107,9 +108,11 @@
 
 
           </td>
-          <td align='center'><input name='iss_unit[]' type='text' id='iss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>"/></td>
+          <td align='center'><input name='iss_unit[]' type='text' id='iss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>" disabled /></td>
 		  
 		  <td align='center'><input name='iss_life[]' type='text' id='iss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
+		  
+		  <td align='center'><input name='iss_make_date[]' type='text' id='iss_make_date_<?php echo $key; ?>' size='12' value="<?php echo substr($row_sub['iss_make_date'],0,10); ?>" /></td>
 
           <!-- <td align='center'><input name='iss_price[]' type='text' id='iss_price_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_price']; ?>"/></td> -->
           <td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['iss_plancount']; ?>" /></td>

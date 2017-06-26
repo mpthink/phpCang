@@ -4,8 +4,8 @@ function getRow(g, h) {
     var i = "<tr id='row_" + g + "'>" +
         "<td align='center'>" + h + "</td>" +
         "<td align='center'>" +
-        "<input name='iss_prodname[]' type='text' id='iss_prodname_" + g + "' size='40' value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>" +
-        "<td align='center'><input type='text' id='iss_cate_name_" + g + "' size='10' disabled='disabled'/></td>" +
+        "<input name='iss_prodname[]' type='text' id='iss_prodname_" + g + "' size='30' value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>" +
+        "<td align='center'><input type='text' id='iss_cate_name_" + g + "' size='8' disabled='disabled'/></td>" +
 
         "<td align='center'><select name='iss_quality[]' id='iss_quality_" + g + "'>"+
         "</select>" +"</td>" +
@@ -13,6 +13,8 @@ function getRow(g, h) {
         "<td align='center'><input name='iss_unit[]' type='text' id='iss_unit_" + g + "' size='8' /></td>" +
 		
 		"<td align='center'><input name='iss_life[]' type='text' id='iss_life_" + g + "' size='8' disabled='disabled'/></td>" +
+		
+		"<td align='center'><input name='iss_make_date[]' type='text' id='iss_make_date_" + g + "' size='12'/></td>" +
 		
         "<td align='center'><input name='iss_plancount[]' type='text' id='iss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='iss_count[]' type='text' id='iss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +
@@ -96,6 +98,7 @@ function bindAutoComplete(g) {
         $("#iss_prodname_" + g).val(i.item.prod_name);
         $("#iss_unit_" + g).val(i.item.prod_unit);
 		$("#iss_life_" + g).val(i.item.prod_life);
+		$("#iss_make_date_" + g).datepicker();
         $("#iss_cate_id_" + g).val(i.item.prod_cate);
         $("#iss_cate_name_" + g).val(i.item.pdca_name);
         $("#iss_plancount_" + g).focus()

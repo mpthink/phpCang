@@ -260,6 +260,7 @@ class InstoreQueryAction extends AppAction{
 					$fencang_data['iss_cate']=$temp_iss_data['iss_cate'];
 					$fencang_data['iss_price']=$temp_iss_data['iss_price'];
 					$fencang_data['iss_quality']=$temp_iss_data['iss_quality'];
+					$fencang_data['iss_make_date']=$temp_iss_data['iss_make_date'];
 					
 					//分仓的新数据从表单获取
 					$fencang_data['iss_plancount']=$_POST["$temp_iss_plancount_id"][$j];
@@ -441,7 +442,7 @@ class InstoreQueryAction extends AppAction{
             $data['iss_price']=$_POST['iss_price'][$i];
 
             $data['iss_quality']=$_POST['iss_quality'][$i];
-            //$data['iss_unit']=$_POST['iss_unit'][$i];
+            $data['iss_make_date']=$_POST['iss_make_date'][$i];
 
             $data['iss_count']=$_POST['iss_count'][$i];
             $data['iss_plancount']=$_POST['iss_plancount'][$i];
