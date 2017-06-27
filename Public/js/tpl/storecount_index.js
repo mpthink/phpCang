@@ -78,7 +78,7 @@ function bindQuality() {
 };
 bindQuality();
 
-function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11){
+function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13){
 	var prod_id = a1;
 	var prod_name = a2;
 	var pdca_id = a3;
@@ -90,6 +90,8 @@ function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11){
 	var store_name = a9;
 	var store_kuwei_name = a10;
 	var sellerunit = a11;
+	var prod_code = a12;
+	var iss_make_date = a13;
 	
 	$("#movedialog").dialog({height: 400, width: 650, title: '产品移库', modal: true, open: function () {
 		$('#move_sellerunit').val(sellerunit);
@@ -104,7 +106,13 @@ function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11){
 		}else{
 			$('#move_source_store').val(store_name+'/'+store_kuwei_name);
 		}
-		
+		$('#move_prod_code').val(prod_code);
+		if(iss_make_date == 'invalid'){
+			$('#move_iss_make_date').val('');
+		}else{
+			$('#move_iss_make_date').val(iss_make_date);
+		}
+
 		$.get("./index.php?s=/InstoreQuery/geStoreBigClass", function(data) {   
 		  $("#move_store_big").html(data);   
 		});
@@ -140,6 +148,7 @@ function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11){
 		action_url += "/source_store_id/"+source_store_id;
 		action_url += "/target_store_id/"+target_store_id;
 		action_url += "/sellerunit/"+sellerunit;
+		action_url += "/iss_make_date/"+iss_make_date;
 
         window.location.href = encodeURI(action_url)
     }, '取消': function () {

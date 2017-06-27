@@ -18,21 +18,21 @@ class StoreCountAction extends AppAction{
         $listRows = $Page->listRows;
         $countsql = "select a.*,b.outcount,(a.incount - ifnull(b.outcount,0)) as allcount
                 from
-                (SELECT sum(iss_count) as `incount`,a.iss_prod,a.iss_quality,a.iss_store,b.*,d.ism_sellerunit,c.*,e.*
+                (SELECT sum(iss_count) as `incount`,a.iss_prod,a.iss_quality,a.iss_store,a.iss_make_date,b.*,d.ism_sellerunit,c.*,e.*
                 FROM twms_instore_sub a
                 LEFT JOIN twms_prod_cate as b on a.iss_cate=b.pdca_id
                 LEFT JOIN twms_product  as c on iss_prod=prod_id
                 LEFT JOIN twms_instore_main as d on iss_mainid=ism_id
 				LEFT JOIN twms_store as e on a.iss_store=e.sto_id
                  WHERE d.ism_status>0 and a.iss_id_p>=0
-                 GROUP BY iss_prod,iss_quality,iss_store
+                 GROUP BY iss_prod,iss_quality,iss_store,iss_make_date
                 )  as a
                 left Join
-                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store
+                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store,oss_make_date
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status >0
-                GROUP BY oss_prod, oss_quality,oss_store )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store=b.oss_store order by allcount desc limit {$firstRow},{$listRows} ";
+                GROUP BY oss_prod, oss_quality,oss_store,oss_make_date )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store=b.oss_store and a.iss_make_date=b.oss_make_date order by allcount desc limit {$firstRow},{$listRows} ";
         $list = $Model_count->query($countsql);
         $incount_sql = "select sum(iss_count) as incount from twms_instore_sub a  LEFT JOIN twms_instore_main as d on iss_mainid=ism_id WHERE d.ism_status>0 and a.iss_id_p>=0";
         $list_incount = $Model_count->query($incount_sql);
@@ -149,14 +149,14 @@ class StoreCountAction extends AppAction{
                 LEFT JOIN twms_instore_main as d on iss_mainid=ism_id
 				LEFT JOIN twms_store as e on a.iss_store=e.sto_id
                  WHERE d.ism_status>0  {$query} and a.iss_id_p>=0
-                 GROUP BY iss_prod,iss_quality,iss_store
+                 GROUP BY iss_prod,iss_quality,iss_store,iss_make_date
                 )  as a
                 left Join
-                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store
+                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store,oss_make_date
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status >0  {$query_osm}
-                GROUP BY oss_prod, oss_quality,oss_store )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store=b.oss_store  order by allcount desc limit {$firstRow},{$listRows} ";
+                GROUP BY oss_prod, oss_quality,oss_store,oss_make_date )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store=b.oss_store and a.iss_make_date=b.oss_make_date  order by allcount desc limit {$firstRow},{$listRows} ";
         $list = $Model_count->query($countsql);
         //var_dump($countsql);
         $incount_sql = "select sum(iss_count) as incount from twms_instore_sub a   LEFT JOIN twms_instore_main as d on iss_mainid=ism_id WHERE d.ism_status>0 and a.iss_id_p>=0 {$query}";
@@ -264,26 +264,30 @@ class StoreCountAction extends AppAction{
             $xlsCell  = array(
                 array('ism_sellerunit','客户单位'),
                 array('iss_prodname','品名规格'),
+				array('prod_code','编码'),
                 array('pdca_name','货物类别'),
                 array('iss_quality','质量类别'),
+				array('iss_make_date','生产日期'),
                 array('allcount','库存数量'),
 				array('store_name','仓库/库位'),
                 array('prod_unit','计价单位'),
                 array('prod_price','装卸成本单价'),
                 array('prod_realprice','装卸收入单价')
             );
-            $filed = 'ism_sellerunit,iss_prodname,pdca_name,iss_quality,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit,prod_price,prod_realprice';
+            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit,prod_price,prod_realprice';
         }else{
             $xlsCell  = array(
                 array('ism_sellerunit','客户单位'),
                 array('iss_prodname','品名规格'),
+				array('prod_code','编码'),
                 array('pdca_name','货物类别'),
                 array('iss_quality','质量类别'),
+				array('iss_make_date','生产日期'),
                 array('allcount','库存数量'),
 				array('store_name','仓库/库位'),
                 array('prod_unit','计价单位')
             );
-            $filed = 'ism_sellerunit,iss_prodname,pdca_name,iss_quality,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit';
+            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit';
         }
 
         $Model_count = new Model();
@@ -296,14 +300,14 @@ class StoreCountAction extends AppAction{
                 LEFT JOIN twms_instore_main as d on iss_mainid=ism_id
 				LEFT JOIN twms_store as e on a.iss_store=e.sto_id
                  WHERE d.ism_status>0 and a.iss_id_p>=0 {$query} 
-                 GROUP BY iss_prod,iss_quality,iss_store
+                 GROUP BY iss_prod,iss_quality,iss_store,iss_make_date
                 )  as a
                 left Join
-                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store
+                (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount`,oss_store,oss_make_date
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status >0 {$query_osm}
-                GROUP BY oss_prod, oss_quality,oss_store )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store  = b.oss_store  order by allcount desc";
+                GROUP BY oss_prod, oss_quality,oss_store,oss_make_date )  as b on  a.iss_prod =  b.oss_prod  and a.iss_quality  = b.oss_quality and a.iss_store  = b.oss_store and a.iss_make_date=b.oss_make_date order by allcount desc";
         $list = $Model_count->query($countsql);
         //var_dump($countsql);
         $common = new CommonAction();
@@ -426,10 +430,10 @@ class StoreCountAction extends AppAction{
 		$pdca_id = $_GET['pdca_id'];
 		$prod_quality = $_GET['prod_quality'];
 		$prod_unit = $_GET['prod_unit'];
+		$iss_make_date = $_GET['iss_make_date'];
 		$prod_allcount = $_GET['prod_allcount'];
 		$source_store_id = $_GET['source_store_id'];
 		$target_store_id = $_GET['target_store_id'];
-		
 		//echo "<script>alert('$source_store_id 测试 $target_store_id ');window.history.back();</script>";
         //    die;
 		
@@ -449,7 +453,7 @@ class StoreCountAction extends AppAction{
 		$outstore_main['osm_carry'] = '其他';
 		$outstore_main['osm_status'] = 1;
 		$outstore_main_id=$model_outstore_main->add($outstore_main);
-		//创建入库单据 outstore_sub
+		//创建出库单据 outstore_sub
 		$model_outstore_sub=M("outstore_sub");
 		$outstore_sub['oss_mainid'] = $outstore_main_id;
 		$outstore_sub['oss_prod'] = $prod_id;
@@ -460,6 +464,11 @@ class StoreCountAction extends AppAction{
 		$outstore_sub['oss_store'] = $source_store_id;
 		$outstore_sub['oss_quality'] = $prod_quality;
 		$outstore_sub['oss_unit'] = $prod_unit;
+
+		if($iss_make_date != "invalid"){
+			$outstore_sub["oss_make_date"] = date('Y-m-d',strtotime($iss_make_date));
+		}
+		
 		$model_outstore_sub->add($outstore_sub);
 		//创建入库单据 instore_main
 		$model_instore_main=M("instore_main");
@@ -487,8 +496,10 @@ class StoreCountAction extends AppAction{
 		$instore_sub['iss_store'] = $target_store_id;
 		$instore_sub['iss_quality'] = $prod_quality;
 		$instore_sub['iss_unit'] = $prod_unit;
+		if($iss_make_date != "invalid"){
+			$instore_sub["iss_make_date"] = date('Y-m-d',strtotime($iss_make_date));
+		}
 		$model_instore_sub->add($instore_sub);
-		
 		$this->redirect("index");
 	}
 

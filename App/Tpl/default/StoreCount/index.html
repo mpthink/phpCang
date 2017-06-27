@@ -75,8 +75,10 @@
             <table class="datalist fixwidth">
                 <tr>
                     <th>品名规格</th>
+					<th>编码</th>
                     <th>类别</th>
                     <th>质量类别</th>
+					<th>生产日期</th>
 					<th>仓库/库位</th>
                     <th>数量</th>
                     <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4){ ?>
@@ -96,11 +98,24 @@
                     <td style="text-align:center">
                         <?php echo $row["prod_name"]; ?>
                     </td>
+					<td style="text-align:center">
+                        <?php echo $row["prod_code"]; ?>
+                    </td>
                     <td style="text-align:center">
                         <?php echo $row["pdca_name"]; ?>
                     </td>
                     <td style="text-align:center">
                         <?php echo $row["iss_quality"]; ?>
+                    </td>
+					<td style="text-align:center">
+                        <?php
+							if($row["iss_make_date"]==""){
+						    $row["iss_make_date"] = "invalid";
+							echo "--";
+						}else{
+							echo substr($row["iss_make_date"],0,10);
+						}
+						?>
                     </td>
 					<td style="text-align:center">
                         <?php if($row["sto_kuwei_name"]==""){
@@ -119,11 +134,11 @@
 
                     <td style="text-align:center"><?php echo $row["ism_sellerunit"]; ?></td>
 					
-					<td style="text-align:center"><a href="#" onclick="toMoveStore(<?php echo "'".$row["iss_prod"]."','".$row["prod_name"]."','".$row["pdca_id"]."','".$row["pdca_name"]."','".$row["iss_quality"]."','".$row["prod_unit"]."','".$row["allcount"]."','".$row["iss_store"]."','".$row["sto_name"]."','".$row["sto_kuwei_name"]."','".$row["ism_sellerunit"]."'"; ?>)">移库</a></td>
+					<td style="text-align:center"><a href="#" onclick="toMoveStore(<?php echo "'".$row["iss_prod"]."','".$row["prod_name"]."','".$row["pdca_id"]."','".$row["pdca_name"]."','".$row["iss_quality"]."','".$row["prod_unit"]."','".$row["allcount"]."','".$row["iss_store"]."','".$row["sto_name"]."','".$row["sto_kuwei_name"]."','".$row["ism_sellerunit"]."','".$row["prod_code"]."','".$row["iss_make_date"]."'"; ?>)">移库</a></td>
                 </tr>
                 <?php } ?>
                 <tr>
-                    <td colspan="3"></td>
+                    <td colspan="5"></td>
                     <td align="center">合计：</td>
                     <td align="center"><?php echo $count; ?></td>
                     <td colspan="4"></td>
@@ -183,6 +198,12 @@
 				<input name="move_prod_id" type="hidden" id="move_prod_name" size="40" disabled />
 			</td>
 		</tr>
+		<tr>
+            <td height="30" align="right">编码： </td>
+            <td align="left">
+				<input name="move_prod_code" type="text" id="move_prod_code" size="40" disabled/>
+			</td>
+        </tr>
         <tr>
             <td height="30" align="right">类别： </td>
             <td align="left">
@@ -193,6 +214,10 @@
         <tr>
             <td height="30" align="right">质量类别： </td>
             <td align="left"><input name="move_iss_quality" type="text" id="move_iss_quality" size="40" disabled /></td>
+        </tr>
+		<tr>
+            <td height="30" align="right">生产日期： </td>
+            <td align="left"><input name="move_iss_make_date" type="text" id="move_iss_make_date" size="40" disabled /></td>
         </tr>
 		<tr>
             <td height="30" align="right">数量： </td>
