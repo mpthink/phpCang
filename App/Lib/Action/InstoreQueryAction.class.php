@@ -552,9 +552,12 @@ class InstoreQueryAction extends AppAction{
                 array('ism_danju_no','客户单据号'),
                 array('ism_danju_date','客户单据日期'),
                 array('iss_prodname','品名规格'),
+				array('prod_code','货物编码'),
                 array('pdca_name','货物类别'),
                 array('prod_unit','计价单位'),
                 array('iss_quality','质量类别'),
+				array('prod_life','保质期(天)'),
+				array('iss_make_date','生产日期'),
                 array('iss_plancount','应收数量'),
                 array('iss_count','实收数量'),
 				array('iss_kuwei_status','分库状态'),
@@ -570,16 +573,19 @@ class InstoreQueryAction extends AppAction{
                 array('ism_operator','勾单员'),
                 array('ism_remark','单据备注')
             );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,pdca_name,prod_unit,iss_quality,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_price,prod_realprice,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
+            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_price,prod_realprice,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
         }else{
             $xlsCell  = array(
                 array('ism_sellerunit','客户单位'),
                 array('ism_danju_no','客户单据号'),
                 array('ism_danju_date','客户单据日期'),
                 array('iss_prodname','品名规格'),
+				array('prod_code','货物编码'),
                 array('pdca_name','货物类别'),
                 array('prod_unit','计价单位'),
                 array('iss_quality','质量类别'),
+				array('prod_life','保质期(天)'),
+				array('iss_make_date','生产日期'),
                 array('iss_plancount','应收数量'),
                 array('iss_count','实收数量'),
 				array('iss_kuwei_status','分库状态'),
@@ -593,7 +599,7 @@ class InstoreQueryAction extends AppAction{
                 array('ism_operator','勾单员'),
                 array('ism_remark','单据备注')
             );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,pdca_name,prod_unit,iss_quality,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
+            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
         }
 
         $model_sub=M("instore_sub");
