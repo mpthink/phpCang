@@ -105,11 +105,13 @@
       <tr>
         <th>序号</th>
           <th>品名规格</th>
+		  <th>编码</th>
           <th>类别</th>
           <th>质量类别</th>
           <th>单位</th>
 
           <th>保质期(天)</th>
+		  <th>生产日期</th>
           <th>应发数量</th>
           <th>实发数量</th>
 
@@ -125,6 +127,8 @@
           <td align='center'>
               <input name='oss_prodname[]' index='<?php echo $key; ?>' type='text' id='oss_prodname_<?php echo $key; ?>' size='20' value="<?php echo $row_sub['oss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
           </td>
+		  <td align='center'><input name='oss_code[]' type='text' id='oss_code_<?php echo $key; ?>' size='20' value="<?php echo $row_sub['prod_code']; ?>" disabled="disabled"/></td>
+		  
           <td align='center'><input name='oss_cate_name[]' type='text' id='oss_cate_name_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['pdca_name']; ?>" disabled="disabled"/></td>
 
           <td align='center'>
@@ -138,6 +142,7 @@
           </td>
           <td align='center'><input name='oss_unit[]' type='text' id='oss_unit_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_unit']; ?>" disabled /></td>
 		  <td align='center'><input name='oss_life[]' type='text' id='oss_life_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['prod_life']; ?>" disabled /></td>
+		  <td align='center'><input name='oss_make_date[]' type='text' id='oss_make_date_<?php echo $key; ?>' size='12' value="<?php echo $row_sub['oss_make_date']; ?>" /></td>
 		  
           <td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_plancount']; ?>"/></td>
           <td align='center'><input name='oss_count[]' type='text' id='oss_count_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['oss_count']; ?>" onblur='compute(<?php echo $key; ?>)'/></td>

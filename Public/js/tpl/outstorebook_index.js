@@ -4,6 +4,9 @@ function getRow(g, h) {
     var i = "<tr align='center' id='row_" + g + "'>" +
         "<td align='center'>" + h + "</td>" +
         "<td align='center'><input type='text' name='oss_prodname[]' id='oss_prodname_" + g + "' size='20' onfocus='clearTip(this)'  onblur='fillTip(this)' value='请输入关键字或空格' style='color:#CCC'/></td>" +
+		
+		"<td align='center'><input name='oss_code[]' type='text' id='oss_code_" + g + "' size='20' disabled /></td>" +
+		
         "<td align='center'><input type='text' id='oss_cate_name_" + g + "' size='8' disabled/></td>" +
 
         "<td align='center'><select name='oss_quality[]' id='oss_quality_" + g + "'>"+
@@ -12,6 +15,8 @@ function getRow(g, h) {
         "<td align='center'><input name='oss_unit[]' type='text' id='oss_unit_" + g + "' size='8' disabled /></td>" +
 		
 		"<td align='center'><input name='oss_life[]' type='text' id='oss_life_" + g + "' size='8' disabled /></td>" +
+		
+		"<td align='center'><input name='oss_make_date[]' type='text' id='oss_make_date_" + g + "' size='10' /></td>" +
 
         "<td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='oss_count[]' type='text' id='oss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +
@@ -107,6 +112,8 @@ function bindAutoComplete(g) {
 		
         $("#oss_unit_" + g).val(i.item.prod_unit);
 		$("#oss_life_" + g).val(i.item.prod_life);
+		$("#oss_code_" + g).val(i.item.prod_code);
+		$("#oss_make_date_" + g).val(i.item.oss_make_date);
 		
         $("#oss_plancount_" + g).focus()
         //$("#oss_total_" + g).val(i.item.iss_price * 1)

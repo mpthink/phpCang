@@ -336,6 +336,8 @@ class OutstoreQueryAction extends AppAction{
             $data_sub["oss_prodname"]=$_POST["oss_prodname"][$i];
 
             $data_sub["oss_quality"]=$_POST["oss_quality"][$i]; //new add
+			
+			$data_sub["oss_make_date"]=$_POST["oss_make_date"][$i]; //new add
 
             $data_sub["oss_prod"]=$_POST["oss_prod"][$i];
             //$data_sub["oss_price"]=$_POST["oss_price"][$i];
