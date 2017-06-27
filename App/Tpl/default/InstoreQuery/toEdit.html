@@ -76,6 +76,7 @@
         <th width="30" style="text-align:center">序号</th>
 
           <th>品名规格</th>
+		  <th>编码</th>
           <th>类别</th>
           <th>质量类别</th>
           <th>单位</th>
@@ -96,6 +97,9 @@
         <td align='center'>
         <input name='iss_prodname[]' index='<?php echo $key; ?>' type='text' id='iss_prodname_<?php echo $key; ?>' size='30' value="<?php echo $row_sub['iss_prodname']; ?>" onfocus='clearTip(this)' onblur='fillTip(this)'/>
         </td>
+		
+		<td align='center'><input name='iss_cate_name[]' type='text' id='iss_cate_name_<?php echo $key; ?>' size='20' value="<?php echo $row_sub['prod_code']; ?>" disabled /></td>
+		
         <td align='center'><input name='iss_cate_name[]' type='text' id='iss_cate_name_<?php echo $key; ?>' size='8' value="<?php echo $row_sub['pdca_name']; ?>" disabled="disabled"/></td>
 
           <td align='center'>

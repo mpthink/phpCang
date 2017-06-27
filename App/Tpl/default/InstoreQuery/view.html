@@ -107,6 +107,7 @@
     <table width="100%" class="datalist fixwidth" id="viewtable">
       <tr id="testAddCang">
         <th>品名规格</th>
+		<th>编码</th>
         <th>类别</th>
 
           <th>质量类别</th>
@@ -130,6 +131,7 @@
         <td align='center'>
 		<?php if($row_sub["iss_id_p"]>0){echo "<font color='#0000FF'>分库：</font>";}  echo $row_sub['prod_name']; ?>
 		</td>
+		<td align='center'><?php echo $row_sub['prod_code']; ?></td>
         <td align='center'><?php echo $row_sub['pdca_name']; ?></td>
 
           <td align='center'><?php echo $row_sub['iss_quality']; ?></td>
@@ -158,7 +160,7 @@
 	  </tr>
       <?php }} ?>
       <tr class="nobg" id="lastLine">
-        <td colspan="5"></td>
+        <td colspan="6"></td>
           <td align='center'>合计：</td>
           <td align='center'><?php echo $count_plan; ?></td>
           <td align='center'><?php echo $count_real; ?></td>

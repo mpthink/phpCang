@@ -103,6 +103,7 @@ class OutstoreBookAction extends AppAction{
             }
 
             $data_sub["oss_total"]=$_POST["oss_total"][$i];
+			$data_sub["oss_insert_order"]=$i;
             $data_sub["oss_store"]=$_POST["oss_store_id"][$i];
             $data_sub["oss_cate"]=$_POST["oss_cate"][$i];
             $model_outsub->add($data_sub);

@@ -44,6 +44,11 @@ alter table cang7.twms_instore_sub add iss_make_date timestamp NULL DEFAULT NULL
 alter table cang7.twms_outstore_sub add oss_make_date timestamp NULL DEFAULT NULL;
 
 
+--phase 4
+alter table cang7.twms_product modify `prod_code` varchar(30) DEFAULT NULL;
+alter table cang7.twms_product modify `prod_unit` varchar(10) DEFAULT NULL;
+alter table cang7.twms_product modify `prod_guest` varchar(50) DEFAULT NULL;
+
 
 
 

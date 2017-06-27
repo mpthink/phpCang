@@ -61,7 +61,7 @@ class InstoreBookAction extends AppAction{
 			
             $data_sub["iss_cate"]=$_POST["iss_cate"][$i];
 			
-			$data_sub['iss_insert_order']=$i;
+			$data_sub["iss_insert_order"]=$i;
             $model_sub->add($data_sub);
             //$data_main["ism_total"]+=$_POST["iss_total"][$i];
         }

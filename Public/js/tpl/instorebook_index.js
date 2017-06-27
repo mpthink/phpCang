@@ -5,6 +5,9 @@ function getRow(g, h) {
         "<td align='center'>" + h + "</td>" +
         "<td align='center'>" +
         "<input name='iss_prodname[]' type='text' id='iss_prodname_" + g + "' size='30' value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>" +
+		
+		"<td align='center'><input name='iss_code[]' type='text' id='iss_code_" + g + "' size='8' disabled='disabled'/></td>" +
+		
         "<td align='center'><input type='text' id='iss_cate_name_" + g + "' size='8' disabled='disabled'/></td>" +
 
         "<td align='center'><select name='iss_quality[]' id='iss_quality_" + g + "'>"+
@@ -98,6 +101,7 @@ function bindAutoComplete(g) {
         $("#iss_prodname_" + g).val(i.item.prod_name);
         $("#iss_unit_" + g).val(i.item.prod_unit);
 		$("#iss_life_" + g).val(i.item.prod_life);
+		$("#iss_code_" + g).val(i.item.prod_code);
 		$("#iss_make_date_" + g).datepicker();
         $("#iss_cate_id_" + g).val(i.item.prod_cate);
         $("#iss_cate_name_" + g).val(i.item.pdca_name);

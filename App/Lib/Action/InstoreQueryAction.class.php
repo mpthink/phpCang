@@ -454,8 +454,11 @@ class InstoreQueryAction extends AppAction{
                 echo "<script>alert('实收数量不能大于应收数量!');window.history.back();</script>";
                 die;
             }
-
+			
+			 $data["iss_insert_order"]=$i;
+			 
             $data['iss_total']=$_POST['iss_total'][$i];
+			
             $data['iss_store']=$_POST['iss_store'][$i];
 			if($data["iss_store"]==""){
 				$data["iss_store"]= $default_sto_id;
