@@ -9,22 +9,31 @@ class OutstoreBookAction extends AppAction{
         $this->display();
     }
 	
-	public function getAvalibleCount($p_buyer,$p_prod,$p_store_id){
+	public function getAvalibleCount($p_buyer,$p_prod,$p_store_id,$oss_make_date){
 		$Model_count = new Model();
+		
+		$iss_date_sql = "";
+		$oss_date_sql = "";
+		if($oss_make_date == null){
+		}else{
+			$iss_date_sql = " and a.iss_make_date='$oss_make_date'";
+			$oss_date_sql = " and oss_make_date='$oss_make_date'";
+		}
+		
 		$sql_incount_done = "SELECT sum(iss_count) as `incount`
                 FROM twms_instore_sub a
                 LEFT JOIN twms_instore_main as b on iss_mainid=ism_id
-                 WHERE b.ism_status>0 and ism_sellerunit = '$p_buyer' and iss_prod='$p_prod' and a.iss_id_p>=0 and a.iss_store='$p_store_id'";
+                 WHERE b.ism_status>0 and ism_sellerunit = '$p_buyer' and iss_prod='$p_prod' and a.iss_id_p>=0 and a.iss_store='$p_store_id' '$iss_date_sql'";
 		$sql_outcount_done = "SELECT SUM( oss_count ) AS `outcount_done`
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
-                WHERE d.osm_status >0 and osm_buyerunit = '$p_buyer' and oss_prod='$p_prod' and oss_store='$p_store_id'";
+                WHERE d.osm_status >0 and osm_buyerunit = '$p_buyer' and oss_prod='$p_prod' and oss_store='$p_store_id' $oss_date_sql";
 		
 		
 		$sql_outcount_doing = "SELECT SUM( oss_count ) AS `outcount_doing`
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
-                WHERE d.osm_status =0 and osm_buyerunit = '$p_buyer' and oss_prod='$p_prod' and oss_store='$p_store_id'";
+                WHERE d.osm_status =0 and osm_buyerunit = '$p_buyer' and oss_prod='$p_prod' and oss_store='$p_store_id' $oss_date_sql";
 				
 		$incount_done_rs = $Model_count->query($sql_incount_done);
 		$incount_done = $incount_done_rs[0]['incount'];
@@ -64,6 +73,8 @@ class OutstoreBookAction extends AppAction{
 			$oss_count=$_POST["oss_count"][$i];
             $oss_plancount=$_POST["oss_plancount"][$i];
 			$oss_prodname=$_POST["oss_prodname"][$i];
+			
+			
 			if($oss_count ==null){
 				$oss_count =$oss_plancount;
 			}
@@ -73,8 +84,9 @@ class OutstoreBookAction extends AppAction{
             }
 			$p_prod=$_POST["oss_prod"][$i];
 			$p_store_id=$_POST["oss_store_id"][$i];
+			$oss_make_date=$_POST["oss_make_date"][$i];
 			
-			$storage_count = $this->getAvalibleCount($p_buyer,$p_prod,$p_store_id);
+			$storage_count = $this->getAvalibleCount($p_buyer,$p_prod,$p_store_id,$oss_make_date);
 
 			if($oss_count > $storage_count){
                 echo "<script>alert('$oss_prodname :     实发数量不能大于可提库存数量!');window.history.back();</script>";
