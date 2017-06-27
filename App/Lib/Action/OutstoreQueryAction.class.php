@@ -270,7 +270,7 @@ class OutstoreQueryAction extends AppAction{
         $list_sub=$model_sub->join('twms_product on prod_id=oss_prod')->
             join('twms_store on sto_id=oss_store')->
             join('twms_prod_cate on oss_cate=pdca_id')->
-            where(array('oss_mainid'=>$_GET['osm_id']))->order('oss_datetime desc')->select();
+            where(array('oss_mainid'=>$_GET['osm_id']))->order('oss_id')->select();
 
         //add for quality
         $model_quality=M('prod_quality');
