@@ -14,8 +14,7 @@ class OutstoreBookAction extends AppAction{
 		
 		$iss_date_sql = "";
 		$oss_date_sql = "";
-		if($oss_make_date == null){
-		}else{
+		if($oss_make_date != null){
 			$iss_date_sql = " and a.iss_make_date='$oss_make_date'";
 			$oss_date_sql = " and oss_make_date='$oss_make_date'";
 		}
@@ -23,7 +22,7 @@ class OutstoreBookAction extends AppAction{
 		$sql_incount_done = "SELECT sum(iss_count) as `incount`
                 FROM twms_instore_sub a
                 LEFT JOIN twms_instore_main as b on iss_mainid=ism_id
-                 WHERE b.ism_status>0 and ism_sellerunit = '$p_buyer' and iss_prod='$p_prod' and a.iss_id_p>=0 and a.iss_store='$p_store_id' '$iss_date_sql'";
+                 WHERE b.ism_status>0 and ism_sellerunit = '$p_buyer' and iss_prod='$p_prod' and a.iss_id_p>=0 and a.iss_store='$p_store_id'   $iss_date_sql";
 		$sql_outcount_done = "SELECT SUM( oss_count ) AS `outcount_done`
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id

@@ -6,7 +6,7 @@ function getRow(g, h) {
         "<td align='center'>" +
         "<input name='iss_prodname[]' type='text' id='iss_prodname_" + g + "' size='30' value='请输入关键字或空格' style='color:#CCC' onfocus='clearTip(this)'  onblur='fillTip(this)'/></td>" +
 		
-		"<td align='center'><input name='iss_code[]' type='text' id='iss_code_" + g + "' size='20' disabled='disabled'/></td>" +
+		"<td align='center'><input name='iss_code[]' type='text' id='iss_code_" + g + "' size='25' disabled='disabled'/></td>" +
 		
         "<td align='center'><input type='text' id='iss_cate_name_" + g + "' size='8' disabled='disabled'/></td>" +
 

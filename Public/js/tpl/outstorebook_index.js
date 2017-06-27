@@ -5,7 +5,7 @@ function getRow(g, h) {
         "<td align='center'>" + h + "</td>" +
         "<td align='center'><input type='text' name='oss_prodname[]' id='oss_prodname_" + g + "' size='20' onfocus='clearTip(this)'  onblur='fillTip(this)' value='请输入关键字或空格' style='color:#CCC'/></td>" +
 		
-		"<td align='center'><input name='oss_code[]' type='text' id='oss_code_" + g + "' size='20' disabled /></td>" +
+		"<td align='center'><input name='oss_code[]' type='text' id='oss_code_" + g + "' size='25' disabled /></td>" +
 		
         "<td align='center'><input type='text' id='oss_cate_name_" + g + "' size='8' disabled/></td>" +
 
@@ -16,7 +16,7 @@ function getRow(g, h) {
 		
 		"<td align='center'><input name='oss_life[]' type='text' id='oss_life_" + g + "' size='8' disabled /></td>" +
 		
-		"<td align='center'><input name='oss_make_date[]' type='text' id='oss_make_date_" + g + "' size='10' /></td>" +
+		"<td align='center'><input name='oss_make_date[]' type='text' id='oss_make_date_" + g + "' size='10' readonly /></td>" +
 
         "<td align='center'><input name='oss_plancount[]' type='text' id='oss_plancount_" + g + "' size='8' /></td>" +
         "<td align='center'><input name='oss_count[]' type='text' id='oss_count_" + g + "' size='8' onblur='compute(" + g + ")'/></td>" +

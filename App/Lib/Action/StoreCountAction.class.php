@@ -7,7 +7,7 @@ class StoreCountAction extends AppAction{
         $list = $model->alias("a")->join("twms_prod_cate as b on a.iss_cate=b.pdca_id")->
             join('twms_product as c on iss_prod=prod_id')->
             join('twms_instore_main as d on iss_mainid=ism_id')->
-            where("d.ism_status>0 and a.iss_id_p>=0")->group("iss_prod,iss_quality,iss_store")->field('iss_prod,iss_quality,iss_store')->select();
+            where("d.ism_status>0 and a.iss_id_p>=0")->group("iss_prod,iss_quality,iss_store,iss_make_date")->field('iss_prod,iss_quality,iss_store,iss_make_date')->select();
         $count=count($list);
         $Page = new Page($count,C('PAGE_SIZE'));
         $show = $Page->show();

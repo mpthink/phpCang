@@ -171,6 +171,12 @@
       </tr>
     </table>
     </div>
+	
+	<?php if($main["osm_status"]==0){ ?>
+
+	<div align="center" class="noPrint"> <font color='red'><b>勾单前必须先选择搬运组</b></font></div>
+	<?php } ?>
+	
 	<table width="100%">
 		<tr>
 			<td width="40%">制单人：&nbsp;&nbsp;<?php echo $main['osm_writer'] ?>&nbsp;&nbsp;</td>
