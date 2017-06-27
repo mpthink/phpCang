@@ -86,15 +86,13 @@ class OutstoreBookAction extends AppAction{
         $model_outmain->create();
         $main_id=$model_outmain->add();
         for($i=0;$i<count($_POST["row_count"]);$i++){
-            $data_sub["oss_insubid"]=$_POST["oss_insubid"][$i];
+            //$data_sub["oss_insubid"]=$_POST["oss_insubid"][$i];
             $data_sub["oss_mainid"]=$main_id;
             $data_sub["oss_prodname"]=$_POST["oss_prodname"][$i];
 
             $data_sub["oss_quality"]=$_POST["oss_quality"][$i]; //new add
-            //$data_sub["oss_unit"]=$_POST["oss_unit"][$i]; //new add
-
+			
             $data_sub["oss_prod"]=$_POST["oss_prod"][$i];
-            //$data_sub["oss_price"]=$_POST["oss_price"][$i];
             $data_sub["oss_count"]=$_POST["oss_count"][$i];
             $data_sub["oss_plancount"]=$_POST["oss_plancount"][$i];
 			
@@ -102,7 +100,6 @@ class OutstoreBookAction extends AppAction{
                 $data_sub["oss_count"] = $data_sub["oss_plancount"];
             }
 
-            $data_sub["oss_total"]=$_POST["oss_total"][$i];
 			$data_sub["oss_insert_order"]=$i;
             $data_sub["oss_store"]=$_POST["oss_store_id"][$i];
             $data_sub["oss_cate"]=$_POST["oss_cate"][$i];

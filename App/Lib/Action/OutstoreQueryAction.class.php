@@ -331,24 +331,23 @@ class OutstoreQueryAction extends AppAction{
 
         $model_outsub->where(array('oss_mainid'=>$_POST['osm_id']))->delete();
         for($i=0;$i<count($_POST["oss_prodname"]);$i++){
-            $data_sub["oss_insubid"]=$_POST["oss_insubid"][$i];
+            //$data_sub["oss_insubid"]=$_POST["oss_insubid"][$i];
             $data_sub["oss_mainid"]=$_POST['osm_id'];
             $data_sub["oss_prodname"]=$_POST["oss_prodname"][$i];
 
             $data_sub["oss_quality"]=$_POST["oss_quality"][$i]; //new add
-            $data_sub["oss_unit"]=$_POST["oss_unit"][$i]; //new add
 
             $data_sub["oss_prod"]=$_POST["oss_prod"][$i];
-            $data_sub["oss_price"]=$_POST["oss_price"][$i];
+            //$data_sub["oss_price"]=$_POST["oss_price"][$i];
             $data_sub["oss_count"]=$_POST["oss_count"][$i];
             $data_sub['oss_plancount']=$_POST['oss_plancount'][$i];
             if($data_sub["oss_count"]==''){
                 $data_sub["oss_count"] = $data_sub["oss_plancount"];
             }
 
-            $data_sub["oss_total"]=$_POST["oss_total"][$i];
+            $data_sub["oss_insert_order"]=$i;
             $data_sub["oss_store"]=$_POST["oss_store_id"][$i];
-            $data_sub["oss_remark"]=$_POST["oss_remark"][$i];
+            //$data_sub["oss_remark"]=$_POST["oss_remark"][$i];
             $data_sub["oss_cate"]=$_POST["oss_cate"][$i];
             $model_outsub->add($data_sub);
 
@@ -463,7 +462,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,pdca_name,oss_unit,oss_quality,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,pdca_name,prod_unit,oss_quality,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
 
         }else{
 

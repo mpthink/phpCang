@@ -70,7 +70,7 @@
             <th>货物编码</th>
             <th>单位</th>
             <th>客户单位</th>
-			<th>保质期(月)</th>
+			<th>保质期(天)</th>
 			<th>单位重量(KG)</th>
           <th>装卸成本单价</th>
             <?php if($_SESSION['user']['user_type']==1||$_SESSION['user']['user_type']==4||$_SESSION['user']['user_type']==5){ ?>
@@ -138,7 +138,7 @@
         </td>
       </tr>
 	  <tr>
-        <td height="30" align="right">保质期(月)： </td>
+        <td height="30" align="right">保质期(天)： </td>
         <td align="left"><input name="prod_life" type="text" id="prod_life" size="40" value="<?php echo $one['prod_life']; ?>"/></td>
       </tr>
 	  <tr>
