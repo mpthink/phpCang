@@ -571,9 +571,10 @@ class InstoreQueryAction extends AppAction{
                 array('ism_status','单据状态'),
                 array('ism_status_time','勾单日期'),
                 array('ism_operator','勾单员'),
+				array('ism_phone','车牌号'),
                 array('ism_remark','单据备注')
             );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_price,prod_realprice,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
+            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_price,prod_realprice,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_phone,ism_remark';
         }else{
             $xlsCell  = array(
                 array('ism_sellerunit','客户单位'),
@@ -597,9 +598,10 @@ class InstoreQueryAction extends AppAction{
                 array('ism_status','单据状态'),
                 array('ism_status_time','勾单日期'),
                 array('ism_operator','勾单员'),
+				array('ism_phone','车牌号'),
                 array('ism_remark','单据备注')
             );
-            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_remark';
+            $filed = 'ism_sellerunit,ism_danju_no,DATE_FORMAT(ism_danju_date,"%Y-%m-%d") ism_danju_date,iss_prodname,prod_code,pdca_name,prod_unit,iss_quality,prod_life,DATE_FORMAT(iss_make_date,"%Y-%m-%d") iss_make_date,iss_count,iss_plancount,case when iss_id_p=-1 then "已分库" end   iss_kuwei_status,sto_name,prod_volume,ism_carry,DATE_FORMAT(ism_date,"%Y-%m-%d") ism_date,ism_writer,CASE WHEN ism_status =0 THEN  "未勾单" WHEN ism_status =1 THEN  "已勾单" WHEN ism_status =2 THEN  "已复核" END ism_status,DATE_FORMAT(ism_status_time,"%Y-%m-%d") ism_status_time,ism_operator,ism_phone,ism_remark';
         }
 
         $model_sub=M("instore_sub");

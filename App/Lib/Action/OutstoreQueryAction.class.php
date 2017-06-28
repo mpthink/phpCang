@@ -474,10 +474,15 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_status','单据状态'),
                 array('osm_status_time','勾单日期'),
                 array('osm_operator','勾单员'),
+				array('osm_phone','车牌号'),
+				array('pddeliver_name','收货人'),
+				array('pddeliver_phone','收货人电话'),
+				array('pddeliver_address','收货人地址'),
+				array('pddeliver_note','收货单位'),
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
 
         }else{
 
@@ -501,10 +506,15 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_status','单据状态'),
                 array('osm_status_time','勾单日期'),
                 array('osm_operator','勾单员'),
+				array('osm_phone','车牌号'),
+				array('pddeliver_name','收货人'),
+				array('pddeliver_phone','收货人电话'),
+				array('pddeliver_address','收货人地址'),
+				array('pddeliver_note','收货单位'),
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
         }
 
         $model_sub=M("outstore_sub");
@@ -512,13 +522,11 @@ class OutstoreQueryAction extends AppAction{
             join('twms_prod_cate c on a.oss_cate=c.pdca_id')->
             join('twms_product d on a.oss_prod	 = d.prod_id')->
 			join('twms_store e on a.oss_store	 = e.sto_id')->
+			join('twms_prod_deliver f on b.osm_deliver = f.pddeliver_id')->
             where($map)->
             Field($filed)->
             order('osm_buyerunit,osm_danju_no')->
             select();
-
-        //var_dump($model_sub->getLastSql());
-
         $common = new CommonAction();
         $common->exportExcel($xlsName,$xlsCell,$list_sub);
 
