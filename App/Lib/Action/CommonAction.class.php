@@ -40,16 +40,17 @@ class CommonAction extends AppAction{
 
         $objPHPExcel->getActiveSheet(0)->mergeCells('A1:'.$cellName[$cellNum-1].'1');//合并单元格
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A1', $expTitle.'  导出时间:'.date('Y-m-d H:i:s'));
+		
         for($i=0;$i<$cellNum;$i++){
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue($cellName[$i].'2', $expCellName[$i][1]);
         }
         // Miscellaneous glyphs, UTF-8
         for($i=0;$i<$dataNum;$i++){
             for($j=0;$j<$cellNum;$j++){
-                $objPHPExcel->getActiveSheet(0)->setCellValue($cellName[$j].($i+3), $expTableData[$i][$expCellName[$j][0]]);
+                $objPHPExcel->getActiveSheet(0)->setCellValueExplicit($cellName[$j].($i+3), $expTableData[$i][$expCellName[$j][0]],PHPExcel_Cell_DataType::TYPE_STRING);
             }
         }
-
+		
         header('pragma:public');
         header('Content-type:application/vnd.ms-excel;charset=utf-8;name="'.$xlsTitle.'.xls"');
         header("Content-Disposition:attachment;filename=$fileName.xls");//attachment新窗口打印inline本窗口打印
