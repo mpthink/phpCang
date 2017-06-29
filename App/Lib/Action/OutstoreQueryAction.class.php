@@ -468,6 +468,7 @@ class OutstoreQueryAction extends AppAction{
                 array('prod_price','装卸成本单价'),
                 array('prod_realprice','装卸收入单价'),
                 array('prod_volume','单位立方量'),
+				array('prod_weight','单件重量'),
                 array('osm_carry','搬运组'),
                 array('osm_date','制单日期'),
                 array('osm_writer','制单员'),
@@ -482,7 +483,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_price,prod_realprice,prod_volume,prod_weight,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
 
         }else{
 
@@ -500,6 +501,7 @@ class OutstoreQueryAction extends AppAction{
                 array('oss_plancount','应发数量'),
                 array('oss_count','实发数量'),
                 array('prod_volume','单位立方量'),
+				array('prod_weight','单件重量'),
                 array('osm_carry','搬运组'),
                 array('osm_date','制单日期'),
                 array('osm_writer','制单员'),
@@ -514,7 +516,7 @@ class OutstoreQueryAction extends AppAction{
                 array('osm_remark','单据备注')
 
             );
-            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
+            $filed = 'osm_buyerunit,osm_danju_no,DATE_FORMAT(osm_danju_date,"%Y-%m-%d") osm_danju_date,oss_prodname,prod_code,pdca_name,prod_unit,oss_quality,prod_life,DATE_FORMAT(oss_make_date,"%Y-%m-%d") oss_make_date,oss_plancount,oss_count,case when sto_kuwei_name!="" then concat(sto_name,"/",sto_kuwei_name) when sto_kuwei_name="" then sto_name end oss_store_name,prod_volume,prod_weight,osm_carry,DATE_FORMAT(osm_date,"%Y-%m-%d") osm_date,osm_writer,CASE WHEN osm_status =0 THEN  "未勾单" WHEN osm_status =1 THEN  "已勾单" WHEN osm_status =2 THEN  "已复核" END osm_status,DATE_FORMAT(osm_status_time,"%Y-%m-%d") osm_status_time,osm_operator,osm_phone,pddeliver_name,pddeliver_phone,pddeliver_address,pddeliver_note,osm_remark';
         }
 
         $model_sub=M("outstore_sub");
