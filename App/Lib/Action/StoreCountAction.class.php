@@ -269,12 +269,13 @@ class StoreCountAction extends AppAction{
                 array('iss_quality','质量类别'),
 				array('iss_make_date','生产日期'),
                 array('allcount','库存数量'),
+				array('prod_weight','单件重量'),
 				array('store_name','仓库/库位'),
                 array('prod_unit','计价单位'),
                 array('prod_price','装卸成本单价'),
                 array('prod_realprice','装卸收入单价')
             );
-            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit,prod_price,prod_realprice';
+            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,prod_weight,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit,prod_price,prod_realprice';
         }else{
             $xlsCell  = array(
                 array('ism_sellerunit','客户单位'),
@@ -284,10 +285,11 @@ class StoreCountAction extends AppAction{
                 array('iss_quality','质量类别'),
 				array('iss_make_date','生产日期'),
                 array('allcount','库存数量'),
+				array('prod_weight','单件重量'),
 				array('store_name','仓库/库位'),
                 array('prod_unit','计价单位')
             );
-            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit';
+            $filed = 'ism_sellerunit,iss_prodname,prod_code,pdca_name,iss_quality,iss_make_date,(incount - ifnull(outcount,0)) as allcount,prod_weight,concat(sto_name,"/",sto_kuwei_name) as store_name,prod_unit';
         }
 
         $Model_count = new Model();
