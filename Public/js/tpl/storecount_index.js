@@ -131,6 +131,7 @@ function toMoveStore(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13){
     }, buttons: {"移库": function () {
         var temp_store_big = $("#move_store_big").val();
         var temp_store_small = $("#move_store_small").val();
+		var prod_allcount=$('#move_allcount').val();
 		var target_store_id;
 		if(temp_store_small != 0){
 			target_store_id = temp_store_small;
