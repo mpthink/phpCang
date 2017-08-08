@@ -9,8 +9,8 @@ function getRow(g, h) {
 		
         "<td align='center'><input type='text' id='oss_cate_name_" + g + "' size='8' disabled/></td>" +
 
-        "<td align='center'><select name='oss_quality[]' id='oss_quality_" + g + "'>"+
-        "</select>" +"</td>" +
+        "<td align='center'><input type='text' name='oss_quality[]' id='oss_quality_" + g + "' size='8'  disabled>"+
+        "</input>" +"</td>" +
 
         "<td align='center'><input name='oss_unit[]' type='text' id='oss_unit_" + g + "' size='8' disabled /></td>" +
 		
@@ -50,13 +50,6 @@ function bindStore(g) {
     })
 };
 
-function bindQuality(g) {
-    $.getJSON('./index.php?s=/OutstoreBook/getQuality', function (h) {
-        $.each(h, function (i, j) {
-            $('#oss_quality_' + g).append("<option value='" + j.pdqu_name + "'>" + j.pdqu_name + "</option>")
-        })
-    })
-};
 
 function deleteRow(g) {
     $("#row_" + g).remove();
@@ -109,6 +102,8 @@ function bindAutoComplete(g) {
 			$("#oss_store_name_" + g).val(i.item.sto_name+"/"+i.item.sto_kuwei_name);
 		}
 		$("#oss_store_id_" + g).val(i.item.sto_id);
+		
+		$("#oss_quality_" + g).val(i.item.iss_quality);
 		
         $("#oss_unit_" + g).val(i.item.prod_unit);
 		$("#oss_life_" + g).val(i.item.prod_life);

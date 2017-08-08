@@ -155,21 +155,23 @@ class OutstoreBookAction extends AppAction{
                 LEFT JOIN twms_instore_main as d on iss_mainid=ism_id
 				LEFT JOIN twms_store as e on a.iss_store=e.sto_id
                  WHERE d.ism_status>0  and a.iss_id_p>=0
-                 GROUP BY iss_prod,iss_store,iss_make_date
+                 GROUP BY iss_prod,iss_quality,iss_store,iss_make_date
                 )  as a
                 left Join
                 (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount_real`,oss_store,oss_make_date
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status >0
-                GROUP BY oss_prod,oss_store,oss_make_date )  as b on  a.iss_prod =  b.oss_prod and a.iss_store=b.oss_store and a.iss_make_date=b.oss_make_date
-
+                GROUP BY oss_prod,oss_quality,oss_store,oss_make_date )  as b on  a.iss_prod =  b.oss_prod and a.iss_store=b.oss_store and a.iss_make_date=b.oss_make_date
+				and a.iss_quality=b.oss_quality
+				
 				left Join
                 (SELECT oss_prod, oss_quality, SUM( oss_count ) AS `outcount_plan`,oss_store,oss_make_date
                 FROM twms_outstore_sub
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status =0
-                GROUP BY oss_prod,oss_store,oss_make_date )  as c on  c.oss_prod = a.iss_prod and a.iss_store=c.oss_store and a.iss_make_date=c.oss_make_date
+                GROUP BY oss_prod,oss_quality,oss_store,oss_make_date )  as c on  c.oss_prod = a.iss_prod and a.iss_store=c.oss_store and a.iss_make_date=c.oss_make_date
+				and a.iss_quality=b.oss_quality
                 {$condition}
 				 order by pdca_name,prod_name asc";
 
@@ -182,7 +184,7 @@ class OutstoreBookAction extends AppAction{
 			if($countForUse==0&&$row['outcount_plan']==0){}
 			else{
 				$result[]=array(
-					'label'=>$row['prod_name'].'(可提数量:'.$countForUse.') (未提数量:'.$row['outcount_plan'].')(仓位:'.$row['sto_name'].'/'.$row['sto_kuwei_name'].')(产日:'.substr($row['iss_make_date'],0,10).')',
+					'label'=>$row['prod_name'].'(质量:'.$row['iss_quality'].') (可提数量:'.$countForUse.') (未提数量:'.$row['outcount_plan'].')(仓位:'.$row['sto_name'].'/'.$row['sto_kuwei_name'].')(产日:'.substr($row['iss_make_date'],0,10).')',
 					'category'=>$row['pdca_name'],
 					'value'=>$row['prod_name'],
 					'prod_unit'=>$row['prod_unit'],
@@ -190,6 +192,7 @@ class OutstoreBookAction extends AppAction{
 					'prod_life'=>$row['prod_life'],
 					'oss_make_date'=>substr($row['iss_make_date'],0,10),
 					'iss_prod'=>$row['iss_prod'],
+					'iss_quality'=>$row['iss_quality'],
 					'iss_id'=>$row['iss_id'],
 					//为仓库增加两个字段，分别为库位id和仓库id
 					'sto_id'=>$row['sto_id'],
