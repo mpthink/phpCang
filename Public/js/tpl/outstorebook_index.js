@@ -38,7 +38,7 @@ $("#btnAdd").click(function () {
     $("#table").append(g);
     bindAutoComplete(d);
     //bindStore(d);
-    bindQuality(d);
+    //bindQuality(d);
     d++;
     e++
 });
