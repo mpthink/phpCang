@@ -9,7 +9,7 @@ function getRow(g, h) {
 		
         "<td align='center'><input type='text' id='oss_cate_name_" + g + "' size='8' disabled/></td>" +
 
-        "<td align='center'><input type='text' name='oss_quality[]' id='oss_quality_" + g + "' size='8'  disabled>"+
+        "<td align='center'><input type='text' name='oss_quality[]' id='oss_quality_" + g + "' size='8'  Readonly>"+
         "</input>" +"</td>" +
 
         "<td align='center'><input name='oss_unit[]' type='text' id='oss_unit_" + g + "' size='8' disabled /></td>" +

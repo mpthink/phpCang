@@ -171,7 +171,7 @@ class OutstoreBookAction extends AppAction{
                 LEFT JOIN twms_outstore_main AS d ON oss_mainid = osm_id
                 WHERE d.osm_status =0
                 GROUP BY oss_prod,oss_quality,oss_store,oss_make_date )  as c on  c.oss_prod = a.iss_prod and a.iss_store=c.oss_store and a.iss_make_date=c.oss_make_date
-				and a.iss_quality=b.oss_quality
+				and a.iss_quality=c.oss_quality
                 {$condition}
 				 order by pdca_name,prod_name asc";
 
