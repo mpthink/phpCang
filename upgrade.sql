@@ -40,8 +40,8 @@ alter table cang7.twms_outstore_sub modify `oss_insert_order` int(11) DEFAULT NU
 
 --phase 3
 --添加生产日期
-alter table cang7.twms_instore_sub add iss_make_date timestamp NULL DEFAULT NULL;
-alter table cang7.twms_outstore_sub add oss_make_date timestamp NULL DEFAULT NULL;
+alter table cang7.twms_instore_sub add `iss_make_date` timestamp NULL DEFAULT NULL;
+alter table cang7.twms_outstore_sub add `oss_make_date` timestamp NULL DEFAULT NULL;
 
 
 --phase 4
