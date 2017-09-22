@@ -102,9 +102,13 @@ input.txt:hover, input.txt:focus, textarea:hover, textarea:focus {
 .logo2 {
     float:left;
     text-indent:-9999px;
-    width:500px;
-    height:74px;
-    background:url(../images/logo2.gif) no-repeat;
+    width:450px;
+    height:70px;
+    background:url(../images/logo2.png) no-repeat;
+}
+
+.bsize2 {	
+    background-size: 450px 70px;
 }
 
 .uinfo {
